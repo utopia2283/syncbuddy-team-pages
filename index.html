@@ -8,6 +8,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <script>
+    (function() {
+        var path = window.location.pathname.replace(/\/$/, '');
+        var redirects = {
+            '/match': '/match-fan.html',
+            '/calvin': '/calvin-tse.html',
+            '/kenneth': '/kenneth-lui.html',
+            '/carine': '/carine-tam.html'
+        };
+        if (redirects[path]) {
+            window.location.href = redirects[path];
+        }
+    })();
+    </script>
     <div class="form-page">
         <div class="form-header">
             <h1>Digital Business Card Builder</h1>
