@@ -779,3 +779,68 @@ body::after {
 .btn-demo svg {
     fill: #00E5FF;
 }
+
+/* ================= Language Toggle Styles ================= */
+.lang-show { display: inline; }
+.lang-hide { display: none; }
+
+body.lang-en .lang-show { display: none; }
+body.lang-en .lang-hide { display: inline; }
+
+.lang-toggle-btn {
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.lang-toggle-btn:hover {
+    background: rgba(0, 229, 255, 0.2) !important;
+    border-color: rgba(0, 229, 255, 0.6) !important;
+    transform: scale(1.05);
+}
+
+/* Hero title adjustments for single-line display */
+.hero-title-zh,
+.hero-title-en {
+    display: block;
+}
+
+body.lang-en .hero-title-zh,
+body.lang-zh .hero-title-en {
+    display: none;
+}
+
+body.lang-en .hero-title-en,
+body.lang-zh .hero-title-zh {
+    display: block;
+}
+
+/* Hero name and title adjustments */
+.name-zh, .name-en,
+.title-zh, .title-en {
+    display: none;
+}
+
+body.lang-zh .name-zh,
+body.lang-zh .title-zh {
+    display: inline;
+}
+
+body.lang-en .name-en,
+body.lang-en .title-en {
+    display: inline;
+}
+
+body.lang-zh .name-en,
+body.lang-zh .title-en {
+    display: none;
+}
+
+body.lang-en .name-zh,
+body.lang-en .title-zh {
+    display: none;
+}
+
+/* Card container language body class */
+.card-container {
+    position: relative;
+}
