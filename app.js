@@ -60,28 +60,6 @@ function showNotification(message) {
     }, 2500);
 }
 
-// ================= Language Toggle =================
-window.currentLang = localStorage.getItem('cardLang') || 'zh';
-
-window.toggleLanguage = function() {
-    window.currentLang = window.currentLang === 'zh' ? 'en' : 'zh';
-    localStorage.setItem('cardLang', window.currentLang);
-    // Re-render the card
-    const container = document.getElementById('cardContainer');
-    if (container && window._currentCardData) {
-        renderCard(window._currentCardData, container);
-    }
-};
-
-window.getLangLabel = function() {
-    return window.currentLang === 'zh' ? 'EN' : '中';
-};
-
-// Helper to wrap content with language class
-function langSpan(content, lang) {
-    return '<span class="lang-' + lang + '">' + content + '</span>';
-}
-
 // Make saveToContact globally accessible for inline onclick handlers
 window.saveToContact = saveToContact;
 
@@ -194,10 +172,6 @@ function renderCard(data, container) {
     // Make data available globally for inline onclick handlers
     window._currentCardData = data;
 
-    // Set body language class
-    document.body.classList.remove('lang-zh', 'lang-en');
-    document.body.classList.add('lang-' + window.currentLang);
-
     // Filter out empty track records
     const tracks = [
         { icon: '🥇', title: data.track1Title, desc: data.track1Desc },
@@ -237,19 +211,14 @@ function renderCard(data, container) {
             <div class="data-stream">01001000 01000101 01001100 01001100 01001111</div>
             <div class="data-stream">01000001 01001000 00100000 01010011 01011001</div>
 
-            <div class="card-actions" style="position:absolute;top:20px;right:20px;display:flex;gap:8px;z-index:10;">
-                <button class="lang-toggle-btn" id="langToggleBtn" onclick="toggleLanguage()" style="padding:8px 14px;font-size:12px;background:rgba(0,229,255,0.1);border:1px solid rgba(0,229,255,0.3);color:#00E5FF;border-radius:6px;cursor:pointer;font-weight:600;">
-                    <span id="langLabel">${window.getLangLabel()}</span>
-                </button>
-                <button class="save-contact-btn" id="saveContactBtn" style="padding:8px 14px;font-size:12px;background:rgba(0,229,255,0.1);border:1px solid rgba(0,229,255,0.3);color:#00E5FF;border-radius:6px;cursor:pointer;">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                        <circle cx="8.5" cy="7" r="4"/>
-                        <line x1="20" y1="8" x2="20" y2="14"/>
-                        <line x1="23" y1="11" x2="17" y2="11"/>
-                    </svg>
-                    Save
-                </button>
+            <div class="save-contact-btn" id="saveContactBtn" style="position:absolute;top:20px;right:20px;padding:8px 14px;font-size:12px;z-index:10;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                    <circle cx="8.5" cy="7" r="4"/>
+                    <line x1="20" y1="8" x2="20" y2="14"/>
+                    <line x1="23" y1="11" x2="17" y2="11"/>
+                </svg>
+                Save
             </div>
 
             <div class="hero-section">
@@ -264,8 +233,8 @@ function renderCard(data, container) {
                         </div>
                     </div>
 
-                    <div class="hero-title-zh lang-show">${escapeHtml(data.titleZh)}</div>
-                    <div class="hero-title-en lang-hide">${escapeHtml(data.titleEn)}</div>
+                    <div class="hero-title-zh">${escapeHtml(data.titleZh)}</div>
+                    <div class="hero-title-en">${escapeHtml(data.titleEn)}</div>
 
                     <a href="${escapeHtml(websiteUrl)}" target="_blank" class="hero-website">
                         <span class="hero-website-text">${escapeHtml(websiteDisplay)}/</span>
@@ -303,14 +272,8 @@ function renderCard(data, container) {
                         </div>
                     </div>
 
-                    <div class="hero-name">
-                        <span class="name-zh lang-show">${escapeHtml(data.nameZh)}</span>
-                        <span class="name-en lang-hide">${escapeHtml(data.nameEn)}</span>
-                    </div>
-                    <div class="hero-title">
-                        <span class="title-zh lang-show">${escapeHtml(data.titleZh)}</span>
-                        <span class="title-en lang-hide">${escapeHtml(data.titleEn)}</span>
-                    </div>
+                    <div class="hero-name">${escapeHtml(data.nameZh)} ${escapeHtml(data.nameEn)}</div>
+                    <div class="hero-title">${escapeHtml(data.titleEn)}</div>
 
                     ${badges.length > 0 ? `
                     <div class="title-badges">
@@ -329,10 +292,7 @@ function renderCard(data, container) {
             ${tracks.length > 0 ? `
             <div class="divider"></div>
             <div class="track-records">
-                <div class="track-title">
-                        <span class="lang-show">🏆 核心 Track Records</span>
-                        <span class="lang-hide">🏆 Core Track Records</span>
-                    </div>
+                <div class="track-title">🏆 核心 Track Records</div>
                 <div class="track-grid">
                     ${tracks.map((t, i) => `
                     <div class="track-item">
@@ -354,10 +314,7 @@ function renderCard(data, container) {
                 <div class="contact-item" onclick="copyToClipboard('${escapeHtml(data.phoneHK)}', this)">
                     <div class="contact-icon">📱</div>
                     <div>
-                        <div class="contact-label">
-                                <span class="lang-show">電話 (HK)</span>
-                                <span class="lang-hide">Phone (HK)</span>
-                            </div>
+                        <div class="contact-label">Phone (HK)</div>
                         <div class="contact-value">${escapeHtml(data.phoneHK)}</div>
                     </div>
                     <div class="whatsapp-btn" onclick="event.stopPropagation(); window.open('https://wa.me/${escapeHtml(data.phoneHK.replace(/[^0-9]/g, ''))}', '_blank')" title="WhatsApp">
@@ -369,10 +326,7 @@ function renderCard(data, container) {
                 <div class="contact-item" onclick="copyToClipboard('${escapeHtml(data.phoneCN)}', this)">
                     <div class="contact-icon">📱</div>
                     <div>
-                        <div class="contact-label">
-                                <span class="lang-show">電話 (CN)</span>
-                                <span class="lang-hide">Phone (CN)</span>
-                            </div>
+                        <div class="contact-label">Phone (CN)</div>
                         <div class="contact-value">${escapeHtml(data.phoneCN)}</div>
                     </div>
                 </div>
@@ -381,10 +335,7 @@ function renderCard(data, container) {
                 <div class="contact-item" onclick="window.location.href='mailto:${escapeHtml(data.email)}'">
                     <div class="contact-icon">✉️</div>
                     <div>
-                        <div class="contact-label">
-                                <span class="lang-show">電郵</span>
-                                <span class="lang-hide">Email</span>
-                            </div>
+                        <div class="contact-label">Email</div>
                         <div class="contact-value">${escapeHtml(data.email)}</div>
                     </div>
                 </div>
@@ -393,11 +344,8 @@ function renderCard(data, container) {
                 <div class="contact-item" onclick="window.open('https://www.google.com/maps/search/?api=1&query=尖沙咀冠華中心603室', '_blank')">
                     <div class="contact-icon">📍</div>
                     <div>
-                        <div class="contact-label">
-                                <span class="lang-show">地址</span>
-                                <span class="lang-hide">Address</span>
-                            </div>
-                        <div class="contact-value">${escapeHtml(data.address)}</div>
+                        <div class="contact-label">Address</div>
+                        <div class="contact-value">尖沙咀冠華中心603室</div>
                     </div>
                 </div>
                 ` : ''}
@@ -406,14 +354,8 @@ function renderCard(data, container) {
 
             <div class="footer">
                 <div class="tagline">
-                    <span class="lang-show">
-                        <span>#香港AI策略專家</span> | #混合型領袖<br>
-                        #技術的靈魂 · #戰略的羅盤 · #精準對接實體產業剛性需求
-                    </span>
-                    <span class="lang-hide">
-                        <span>#HK AI Strategy Expert</span> | #Hybrid Leader<br>
-                        #Technical Soul · #Strategic Compass · #Precision Match for Real-World Industry Needs
-                    </span>
+                    <span>#香港AI策略專家</span> | #混合型領袖<br>
+                    #技術的靈魂 · #戰略的羅盤 · #精準對接實體產業剛性需求
                 </div>
             </div>
         </div>
