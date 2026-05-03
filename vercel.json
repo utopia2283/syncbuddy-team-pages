@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    { "source": "/match", "destination": "/match-fan.html" },
+    { "source": "/calvin", "destination": "/calvin-tse.html" },
+    { "source": "/kenneth", "destination": "/kenneth-lui.html" },
+    { "source": "/carine", "destination": "/carine-tam.html" }
+  ]
+}
