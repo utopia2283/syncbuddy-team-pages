@@ -1,51 +1,201 @@
 <!DOCTYPE html>
-<html lang="zh-HK">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SyncBuddy Team</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: system-ui, sans-serif;
-            background: #0A0A0F;
-            color: white;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 24px;
-        }
-        h1 { font-size: 2rem; margin-bottom: 24px; }
-        .links { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; max-width: 600px; }
-        a {
-            padding: 16px 32px;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 12px;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        a:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
-        .calvin { border-color: rgba(139,92,246,0.5); }
-        .calvin:hover { background: rgba(139,92,246,0.2); }
-        .match { border-color: rgba(6,182,212,0.5); }
-        .match:hover { background: rgba(6,182,212,0.2); }
-        .kenneth { border-color: rgba(245,158,11,0.5); }
-        .kenneth:hover { background: rgba(245,158,11,0.2); }
-        .carine { border-color: rgba(16,185,129,0.5); }
-        .carine:hover { background: rgba(16,185,129,0.2); }
-    </style>
+    <title>Digital Business Card Builder</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&family=Montserrat:wght@700;900&family=Noto+Sans+TC:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>SyncBuddy Team</h1>
-    <div class="links">
-        <a href="/calvin-tse.html" class="calvin">Calvin Tse</a>
-        <a href="/match-fan.html" class="match">Match Fan</a>
-        <a href="/kenneth-lui.html" class="kenneth">Kenneth Lui</a>
-        <a href="/carine-tam.html" class="carine">Carine Tam</a>
+    <div class="form-page">
+        <div class="form-header">
+            <h1>Digital Business Card Builder</h1>
+            <p>Create your professional digital business card in seconds</p>
+        </div>
+
+        <form id="cardForm">
+            <!-- Basic Info Section -->
+            <div class="form-section">
+                <div class="form-section-title">Basic Information</div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nameZh">Name (Chinese) *</label>
+                        <input type="text" id="nameZh" placeholder="範景誠" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nameEn">Name (English) *</label>
+                        <input type="text" id="nameEn" placeholder="Match Fan" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="titleZh">Title (Chinese) *</label>
+                        <input type="text" id="titleZh" placeholder="首席自主智能體架構師" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="titleEn">Title (English) *</label>
+                        <input type="text" id="titleEn" placeholder="Chief Autonomous Agent Architect" required>
+                    </div>
+                </div>
+
+                <div class="form-row single">
+                    <div class="form-group">
+                        <label for="company">Company</label>
+                        <input type="text" id="company" placeholder="SyncBuddy">
+                    </div>
+                </div>
+
+                <div class="form-row single">
+                    <div class="form-group">
+                        <label for="photoUrl">Profile Photo URL</label>
+                        <input type="url" id="photoUrl" placeholder="https://example.com/photo.jpg">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="form-section">
+                <div class="form-section-title">Contact Information</div>
+
+                <div class="form-row single">
+                    <div class="form-group">
+                        <label for="website">Website</label>
+                        <input type="url" id="website" placeholder="https://syncbuddyai.com">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Match@syncbuddyai.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneHK">Phone (HK)</label>
+                        <input type="tel" id="phoneHK" placeholder="+852 5588 8830">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phoneCN">Phone (CN)</label>
+                        <input type="tel" id="phoneCN" placeholder="+86 130 6847 8223">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" placeholder="尖沙咀冠華中心603室">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quote Section -->
+            <div class="form-section">
+                <div class="form-section-title">Quote / Motto</div>
+                <div class="form-row single">
+                    <div class="form-group">
+                        <label for="quote">Your Personal Quote</label>
+                        <textarea id="quote" placeholder="摒棄艱澀代碼，專注商業變現與投資回報 (ROI)"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Track Records Section -->
+            <div class="form-section">
+                <div class="form-section-title">Track Records (up to 4)</div>
+
+                <div class="track-record-input">
+                    <input type="text" id="track1Title" placeholder="Achievement Title">
+                    <input type="text" id="track1Desc" placeholder="Description">
+                </div>
+
+                <div class="track-record-input">
+                    <input type="text" id="track2Title" placeholder="Achievement Title">
+                    <input type="text" id="track2Desc" placeholder="Description">
+                </div>
+
+                <div class="track-record-input">
+                    <input type="text" id="track3Title" placeholder="Achievement Title">
+                    <input type="text" id="track3Desc" placeholder="Description">
+                </div>
+
+                <div class="track-record-input">
+                    <input type="text" id="track4Title" placeholder="Achievement Title">
+                    <input type="text" id="track4Desc" placeholder="Description">
+                </div>
+            </div>
+
+            <!-- Badges Section -->
+            <div class="form-section">
+                <div class="form-section-title">Association / Title Badges (up to 3)</div>
+
+                <div class="badge-row">
+                    <select id="badge1Type" class="badge-type-select">
+                        <option value="association">Association</option>
+                        <option value="business">Business</option>
+                    </select>
+                    <input type="text" id="badge1" placeholder="e.g., 人工智能應用協會 會長">
+                </div>
+
+                <div class="badge-row">
+                    <select id="badge2Type" class="badge-type-select">
+                        <option value="association">Association</option>
+                        <option value="business" selected>Business</option>
+                    </select>
+                    <input type="text" id="badge2" placeholder="e.g., 新界總商會 董事">
+                </div>
+
+                <div class="badge-row">
+                    <select id="badge3Type" class="badge-type-select">
+                        <option value="association">Association</option>
+                        <option value="business" selected>Business</option>
+                    </select>
+                    <input type="text" id="badge3" placeholder="e.g., 香港青年新創見 副會長">
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="form-actions">
+                <button type="button" id="previewBtn" class="btn btn-secondary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                    Update Preview
+                </button>
+                <button type="button" id="shareBtn" class="btn btn-primary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="18" cy="5" r="3"/>
+                        <circle cx="6" cy="12" r="3"/>
+                        <circle cx="18" cy="19" r="3"/>
+                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                    </svg>
+                    Generate Shareable Link
+                </button>
+            </div>
+        </form>
+
+        <!-- Demo Example Button -->
+        <div class="demo-section">
+            <a href="/match" target="_blank" class="btn btn-demo">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                View Demo Example (範景誠)
+            </a>
+        </div>
+
+        <!-- Live Preview Section -->
+        <div class="preview-section" id="previewSection">
+            <h2>Live Preview</h2>
+            <div class="preview-container" id="previewContainer">
+                <!-- Preview will be rendered here -->
+            </div>
+        </div>
     </div>
+
+    <script src="app.js"></script>
 </body>
 </html>
