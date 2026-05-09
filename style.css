@@ -314,7 +314,8 @@ body::after {
     transition: transform 0.4s ease;
 }
 .profile-inner img.profile-photo-carine-tam,
-.profile-inner img.profile-photo-calvin-tse {
+.profile-inner img.profile-photo-calvin-tse,
+.profile-inner img.profile-photo-match-fan {
     object-position: center 18%;
 }
 .profile-ring:hover .profile-inner img {
