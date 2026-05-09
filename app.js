@@ -20,6 +20,13 @@ function decodeCardData(encoded) {
     }
 }
 
+function getProfilePhotoClass(name) {
+    return `profile-photo-${String(name || '')
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-|-$/g, '')}`;
+}
+
 // Generate shareable URL
 function generateShareableURL(data) {
     const encoded = encodeCardData(data);
@@ -260,7 +267,7 @@ function renderCard(data, container) {
                         <div class="profile-3d-shadow"></div>
                         <div class="profile-ring">
                             <div class="profile-inner">
-                                <img src="${escapeHtml(data.photoUrl || 'profile-photo.jpg')}" alt="${escapeHtml(data.nameEn)}" onerror="this.src='profile-photo.jpg'">
+                                <img class="${escapeHtml(getProfilePhotoClass(data.nameEn))}" src="${escapeHtml(data.photoUrl || 'profile-photo.jpg')}" alt="${escapeHtml(data.nameEn)}" onerror="this.src='profile-photo.jpg'">
                                 <div class="profile-scanline"></div>
                                 <div class="profile-gradient-overlay"></div>
                             </div>
