@@ -194,13 +194,13 @@ function renderCard(data, container) {
     if (data.badge3) badges.push({ text: data.badge3, type: data.badge3Type });
 
     // Clean website URL
-    let websiteUrl = data.website || 'https://example.com';
+    let websiteUrl = data.website || 'https://syncbuddyai.com';
     if (websiteUrl && !websiteUrl.startsWith('http')) {
         websiteUrl = 'https://' + websiteUrl;
     }
 
     // Extract domain from website
-    let websiteDisplay = data.website || 'example.com';
+    let websiteDisplay = data.website || 'syncbuddyai.com';
     if (websiteDisplay.startsWith('http')) {
         try {
             websiteDisplay = new URL(websiteDisplay).hostname;
