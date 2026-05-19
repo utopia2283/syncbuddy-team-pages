@@ -91,7 +91,7 @@ function saveToContact(data) {
 VERSION:3.0
 N:${escapeHtml(cardData.nameZh || '')};${escapeHtml(cardData.nameEn || '')};;;
 FN:${escapeHtml(cardData.nameEn || cardData.nameZh || '')}
-ORG:SyncBuddy TECHNOLOGY
+ORG:Sync Buddy Technology Limited
 TITLE:${escapeHtml(cardData.titleEn || cardData.titleZh || '')}
 TEL;TYPE=WORK,MSG:${escapeHtml(cardData.phoneHK || '')}
 TEL;TYPE=CELL:${escapeHtml(cardData.phoneCN || '')}
