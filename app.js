@@ -91,7 +91,7 @@ function saveToContact(data) {
 VERSION:3.0
 N:${escapeHtml(cardData.nameZh || '')};${escapeHtml(cardData.nameEn || '')};;;
 FN:${escapeHtml(cardData.nameEn || cardData.nameZh || '')}
-ORG:Sync Buddy Technology Limited
+|ORG:${escapeHtml(cardData.companyFull || cardData.company || 'Sync Buddy Technology Limited')}
 TITLE:${escapeHtml(cardData.titleEn || cardData.titleZh || '')}
 TEL;TYPE=WORK,MSG:${escapeHtml(cardData.phoneHK || '')}
 TEL;TYPE=CELL:${escapeHtml(cardData.phoneCN || '')}
@@ -181,10 +181,10 @@ function renderCard(data, container) {
 
     // Filter out empty track records
     const tracks = [
-        { icon: '🥇', title: data.track1Title, desc: data.track1Desc },
-        { icon: '🤝', title: data.track2Title, desc: data.track2Desc },
-        { icon: '📊', title: data.track3Title, desc: data.track3Desc },
-        { icon: '🎓', title: data.track4Title, desc: data.track4Desc },
+        { icon: '🥇', title: data.track1Title, desc: data.track1Desc, descEn: data.track1DescEn },
+        { icon: '🤝', title: data.track2Title, desc: data.track2Desc, descEn: data.track2DescEn },
+        { icon: '📊', title: data.track3Title, desc: data.track3Desc, descEn: data.track3DescEn },
+        { icon: '🎓', title: data.track4Title, desc: data.track4Desc, descEn: data.track4DescEn },
     ].filter(t => t.title && t.title.trim() !== '');
 
     // Filter out empty badges
@@ -237,12 +237,14 @@ function renderCard(data, container) {
                         <div class="hero-logo-text">
                             <div class="hero-logo-main">SyncBuddy</div>
                             <div class="hero-logo-sub">TECHNOLOGY</div>
+                            ${data.companyFull ? `<div class="hero-logo-full">${escapeHtml(data.companyFull)}</div>` : ''}
                         </div>
                     </div>
 
-                    <div class="hero-title-zh">${escapeHtml(data.titleZh)}</div>
-                    <div class="hero-title-en">${escapeHtml(data.titleEn)}</div>
+                    <div class="hero-title-zh${data.useKaiFont ? ' title-font-kai' : ''}${data.titleSm ? ' title-sm' : ''}">${escapeHtml(data.titleZh)}</div>
+                    <div class="hero-title-en${data.useTimesFont ? ' title-font-times' : ''}${data.titleSm ? ' title-sm' : ''}">${escapeHtml(data.titleEn)}</div>
 
+                    ${data.hideWebsite ? '' : `
                     <a href="${escapeHtml(websiteUrl)}" target="_blank" class="hero-website">
                         <span class="hero-website-text">${escapeHtml(websiteDisplay)}/</span>
                         <span class="hero-website-icon">
@@ -252,12 +254,13 @@ function renderCard(data, container) {
                             </svg>
                         </span>
                     </a>
+                    `}
 
-                    <a href="https://www.youtube.com/watch?v=F8Y4KIbx_5w" target="_blank" class="master-btn">
+                    <a href="https://www.youtube.com/watch?v=F8Y4KIbx_5w" target="_blank" class="master-btn${data.masterBtnPos === 'bottom-right' ? ' master-btn-bottom-right' : ''}">
                         <div class="master-icon"></div>
                         <div class="master-text-group">
-                            <div class="master-t1">THE MASTER PLAN</div>
-                            <div class="master-t2">啟動實體世界覺醒</div>
+                            <div class="master-t1">${escapeHtml(data.masterBtnT1 || 'THE MASTER PLAN')}</div>
+                            <div class="master-t2">${escapeHtml(data.masterBtnT2 || '啟動實體世界覺醒')}</div>
                         </div>
                     </a>
                 </div>
@@ -308,6 +311,7 @@ function renderCard(data, container) {
                             <div class="track-title-text">${escapeHtml(t.title)}</div>
                         </div>
                         <div class="track-description">${escapeHtml(t.desc)}</div>
+                        ${t.descEn ? `<div class="track-description-en">${escapeHtml(t.descEn)}</div>` : ''}
                     </div>
                     `).join('')}
                 </div>
@@ -316,13 +320,14 @@ function renderCard(data, container) {
 
             ${(data.phoneHK || data.phoneCN || data.email || data.address) ? `
             <div class="divider"></div>
-            <div class="contact-grid">
+            <div class="contact-grid${data.contactEmailFirst ? ' contact-grid-reorder' : ''}">
                 ${data.phoneHK ? `
                 <div class="contact-item" onclick="copyToClipboard('${escapeHtml(data.phoneHK)}', this)">
                     <div class="contact-icon">📱</div>
                     <div>
                         <div class="contact-label">Phone (HK)</div>
                         <div class="contact-value">${escapeHtml(data.phoneHK)}</div>
+                        ${data.wechat ? `<div class="contact-sub" style="font-size:12px;opacity:0.75;margin-top:2px;">WeChat: ${escapeHtml(data.wechat)}</div>` : ''}
                     </div>
                     <div class="whatsapp-btn" onclick="event.stopPropagation(); window.open('https://wa.me/${escapeHtml(data.phoneHK.replace(/[^0-9]/g, ''))}', '_blank')" title="WhatsApp">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.36-.214-3.742.982.998-3.653-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.447-9.894 9.894-9.894 2.643.001 5.137 1.033 7.028 2.924a9.832 9.832 0 012.923 7.031c-.003 5.45-4.447 9.894-9.894 9.894m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -348,11 +353,11 @@ function renderCard(data, container) {
                 </div>
                 ` : ''}
                 ${data.address ? `
-                <div class="contact-item" onclick="window.open('https://www.google.com/maps/search/?api=1&query=尖沙咀冠華中心603室', '_blank')">
+                <div class="contact-item" onclick="window.open('https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(data.address)}', '_blank')">
                     <div class="contact-icon">📍</div>
                     <div>
                         <div class="contact-label">Address</div>
-                        <div class="contact-value">尖沙咀冠華中心603室</div>
+                        <div class="contact-value">${escapeHtml(data.address)}</div>
                     </div>
                 </div>
                 ` : ''}
@@ -361,9 +366,13 @@ function renderCard(data, container) {
 
             <div class="footer">
                 <div class="tagline">
-                    <span>#香港AI策略專家</span> | #混合型領袖<br>
-                    #技術的靈魂 · #戰略的羅盤 · #精準對接實體產業剛性需求
+                    ${data.hashtags && data.hashtags.length > 0
+                        ? data.hashtags.map((h, i) => `<span>${escapeHtml(h)}</span>${i < data.hashtags.length - 1 ? ' &middot; ' : ''}`).join('')
+                        : `<span>#香港AI策略專家</span> | #混合型領袖<br>
+                    #技術的靈魂 · #戰略的羅盤 · #精準對接實體產業剛性需求`
+                    }
                 </div>
+                ${data.footerWebsite ? `<div class="footer-website">website: ${escapeHtml(data.footerWebsite)}</div>` : ''}
             </div>
         </div>
     `;
@@ -380,7 +389,7 @@ function renderCard(data, container) {
                 return;
             }
             const name = cardData.nameEn || cardData.nameZh || 'contact';
-            const vCard = `BEGIN:VCARD\r\nVERSION:3.0\r\nN:${cardData.nameZh || ''};${cardData.nameEn || ''};;;\r\nFN:${cardData.nameEn || cardData.nameZh}\r\nORG:SyncBuddy TECHNOLOGY\r\nTITLE:${cardData.titleEn || cardData.titleZh}\r\nTEL;TYPE=WORK,MSG:${cardData.phoneHK || ''}\r\nTEL;TYPE=CELL:${cardData.phoneCN || ''}\r\nEMAIL;TYPE=WORK:${cardData.email || ''}\r\nADR;TYPE=WORK:;;${cardData.address || ''};;;;\r\nURL:https://syncbuddyai.com\r\nNOTE:${cardData.quote || ''}\r\nEND:VCARD`;
+            const vCard = `BEGIN:VCARD\r\nVERSION:3.0\r\nN:${cardData.nameZh || ''};${cardData.nameEn || ''};;;\r\nFN:${cardData.nameEn || cardData.nameZh}\r\nORG:${cardData.companyFull || cardData.company || 'SyncBuddy TECHNOLOGY'}\r\nTITLE:${cardData.titleEn || cardData.titleZh}\r\nTEL;TYPE=WORK,MSG:${cardData.phoneHK || ''}\r\nTEL;TYPE=CELL:${cardData.phoneCN || ''}\r\nEMAIL;TYPE=WORK:${cardData.email || ''}\r\nADR;TYPE=WORK:;;${cardData.address || ''};;;;\r\nURL:https://syncbuddyai.com\r\nNOTE:${cardData.quote || ''}\r\nEND:VCARD`;
             const dataUri = 'data:text/vcard;charset=utf-8,' + encodeURIComponent(vCard);
             const link = document.createElement('a');
             link.href = dataUri;

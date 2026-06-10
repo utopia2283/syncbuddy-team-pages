@@ -252,6 +252,55 @@ body::after {
     box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
     transform: scale(1.02);
 }
+.master-btn-bottom-right {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    z-index: 5;
+}
+
+/* Font overrides (per-card) */
+.title-font-times {
+    font-family: 'Times New Roman', 'Liberation Serif', serif !important;
+    letter-spacing: 0 !important;
+}
+.title-font-kai {
+    font-family: "Kaiti TC", "Kaiti SC", "STKaiti", "BiauKai", "DFKai-SB", "Noto Sans TC", cursive !important;
+    letter-spacing: 0 !important;
+}
+.title-sm {
+    font-size: 22px !important;
+    line-height: 1.25 !important;
+}
+.hero-logo-full {
+    font-size: 9px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.55);
+    margin-top: 3px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+/* Contact grid reorder: email first, then phone, then address */
+.contact-grid-reorder { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.contact-grid-reorder .contact-item:nth-child(1) { order: 2; }  /* phoneHK */
+.contact-grid-reorder .contact-item:nth-child(2) { order: 4; }  /* phoneCN */
+.contact-grid-reorder .contact-item:nth-child(3) { order: 1; }  /* email - up right */
+.contact-grid-reorder .contact-item:nth-child(4) { order: 3; }  /* address - left */
+
+.track-description-en {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 4px;
+    line-height: 1.5;
+    font-style: italic;
+}
+.footer-website {
+    font-size: 11px;
+    color: rgba(0, 229, 255, 0.7);
+    margin-top: 8px;
+    letter-spacing: 0.5px;
+}
 .master-icon {
     width: 40px; height: 40px; background: #FF0000; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
