@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SyncBuddy AI 官方全面合規政策文件 — 數據隱私、用戶服務、數據刪除與亞太地區法律修正案。">
+    <title>全面合規政策 · SyncBuddy AI</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="home.css">
+    <style>
+        .policy-shell {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 140px 32px 80px;
+            color: var(--text);
+        }
+        .policy-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--cyan);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            margin-bottom: 32px;
+            transition: opacity .2s ease;
+        }
+        .policy-back:hover { opacity: 0.7; }
+        .policy-eyebrow {
+            font-size: 12px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin: 0 0 12px;
+            font-weight: 600;
+        }
+        .policy-title {
+            font-size: clamp(34px, 4.4vw, 52px);
+            line-height: 1.08;
+            margin: 0 0 16px;
+            font-weight: 800;
+            background: linear-gradient(120deg, #fff 10%, var(--cyan) 60%, var(--violet) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .policy-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+            color: var(--muted);
+            font-size: 14px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid var(--line);
+            margin-bottom: 36px;
+        }
+        .policy-meta strong { color: var(--text); font-weight: 600; }
+        .policy-toc {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 24px 28px;
+            margin-bottom: 56px;
+            backdrop-filter: blur(12px);
+        }
+        .policy-toc h2 {
+            font-size: 13px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--dim);
+            margin: 0 0 14px;
+            font-weight: 600;
+        }
+        .policy-toc ol { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+        .policy-toc ol li {
+            counter-increment: toc;
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            font-size: 15px;
+        }
+        .policy-toc ol li::before {
+            content: counter(toc, decimal-leading-zero);
+            color: var(--cyan);
+            font-family: "JetBrains Mono", ui-monospace, monospace;
+            font-size: 12px;
+            min-width: 26px;
+        }
+        .policy-toc a {
+            color: var(--text);
+            text-decoration: none;
+            border-bottom: 1px dashed transparent;
+            transition: border-color .2s ease, color .2s ease;
+        }
+        .policy-toc a:hover { color: var(--cyan); border-bottom-color: var(--cyan); }
+        .policy-body { counter-reset: section; }
+        .policy-section { margin-bottom: 64px; scroll-margin-top: 110px; }
+        .policy-section h2 {
+            font-size: clamp(22px, 2.2vw, 28px);
+            line-height: 1.2;
+            margin: 0 0 6px;
+            font-weight: 700;
+            color: var(--text);
+            counter-increment: section;
+            display: flex;
+            align-items: baseline;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .policy-section h2::before {
+            content: counter(section, decimal-leading-zero);
+            color: var(--cyan);
+            font-family: "JetBrains Mono", ui-monospace, monospace;
+            font-size: 14px;
+            letter-spacing: 0.06em;
+        }
+        .policy-section h2 small {
+            color: var(--dim);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+        }
+        .policy-section h3 {
+            font-size: 17px;
+            margin: 28px 0 10px;
+            color: var(--cyan);
+            font-weight: 600;
+        }
+        .policy-section p {
+            color: var(--muted);
+            font-size: 15.5px;
+            line-height: 1.75;
+            margin: 0 0 14px;
+        }
+        .policy-section ol, .policy-section ul {
+            color: var(--muted);
+            font-size: 15.5px;
+            line-height: 1.75;
+            padding-left: 22px;
+            margin: 6px 0 18px;
+        }
+        .policy-section ol li, .policy-section ul li { margin-bottom: 8px; }
+        .policy-section ol li::marker { color: var(--cyan); font-weight: 600; }
+        .policy-section a { color: var(--cyan); text-decoration: none; border-bottom: 1px dashed var(--line-cyan); }
+        .policy-section a:hover { border-bottom-style: solid; }
+        .policy-section .doc-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 14px 0 20px;
+            font-size: 14.5px;
+            background: var(--panel-2);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .policy-section .doc-table th, .policy-section .doc-table td {
+            text-align: left;
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--line);
+            vertical-align: top;
+            color: var(--muted);
+        }
+        .policy-section .doc-table th {
+            background: rgba(0, 229, 255, 0.05);
+            color: var(--cyan);
+            font-weight: 600;
+            font-size: 13px;
+            letter-spacing: 0.04em;
+        }
+        .policy-section .doc-table tr:last-child td { border-bottom: none; }
+        .policy-section .callout {
+            border-left: 3px solid var(--cyan);
+            background: rgba(0, 229, 255, 0.04);
+            padding: 14px 18px;
+            margin: 18px 0;
+            border-radius: 0 12px 12px 0;
+            color: var(--text);
+            font-size: 14.5px;
+        }
+        .policy-section .callout strong { color: var(--cyan); }
+        .policy-foot {
+            border-top: 1px solid var(--line);
+            margin-top: 48px;
+            padding-top: 24px;
+            color: var(--dim);
+            font-size: 13px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 20px;
+            justify-content: space-between;
+        }
+        .policy-foot a { color: var(--cyan); text-decoration: none; }
+        @media (max-width: 720px) {
+            .policy-shell { padding: 120px 20px 60px; }
+            .policy-meta { flex-direction: column; gap: 6px; }
+            .policy-section .doc-table { font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor-glow" aria-hidden="true"></div>
+    <header class="site-header">
+        <a class="brand" href="/" aria-label="SyncBuddy home">
+            <img src="logo.png" alt="SyncBuddy logo">
+            <span><strong>SyncBuddy</strong><small>Tech Limited</small></span>
+        </a>
+        <nav aria-label="Primary navigation">
+            <a href="/#about">關於我們</a>
+            <a href="/#products">產品</a>
+            <a href="/#team">核心團隊</a>
+            <a href="/#news">最新消息</a>
+            <a href="/#contact">聯絡我們</a>
+            <a href="/demo/" class="nav-demo">體驗 Demo</a>
+        </nav>
+    </header>
+
+    <main class="policy-shell">
+        <a class="policy-back" href="/">← 返回首頁</a>
+        <p class="policy-eyebrow">Legal &middot; Compliance</p>
+        <h1 class="policy-title">SyncBuddy AI 官方全面合規政策文件</h1>
+        <div class="policy-meta">
+            <span>文件版本：<strong>2026-V1.1</strong></span>
+            <span>生效日期：<strong>2026年6月1日</strong></span>
+            <span>法律管轄：<strong>全球標準與亞太特定法區</strong></span>
+            <span>最後更新：<strong>2026-06-15</strong></span>
+        </div>
+
+        <nav class="policy-toc" aria-label="目錄">
+            <h2>文件章節索引</h2>
+            <ol>
+                <li><a href="#privacy">全球數據隱私政策 (Data Privacy Policy)</a></li>
+                <li><a href="#terms">用戶服務條款 (Terms of Service)</a></li>
+                <li><a href="#deletion">用戶數據刪除政策 (User Data Deletion Policy)</a></li>
+                <li><a href="#apac">亞太特定地區法律修正案 (Regional Addendum)</a></li>
+                <li><a href="#law">準據法與爭議解決 (Governing Law &amp; Dispute Resolution)</a></li>
+            </ol>
+        </nav>
+
+        <div class="policy-body">
+
+            <section class="policy-section" id="privacy">
+                <h2>全球數據隱私政策 <small>Data Privacy Policy</small></h2>
+                <p>歡迎使用由 SyncBuddy AI（以下簡稱「我們」、「本平台」或「SyncBuddy」）透過官方網站（<a href="/">https://syncbuddy.ai</a>）及相關應用程式提供的智能工作流同步與自動化服務。本協議是一份具法律約束力的綜合性文件，內容涵蓋並整合了資料隱私政策、用戶服務條款、用戶數據刪除政策，以及針對香港特別行政區與中國內地法律環境特別定制的法律優化修正條款。</p>
+                <p>SyncBuddy AI 將用戶的數據機密性、完整性與安全性置於首位。本節闡明我們在您與本智能生產力平台互動時，如何收集、處理、儲存及保護您的個人資料與跨平台同步環境。</p>
+
+                <h3>1.1 我們收集的資訊範疇</h3>
+                <p>為了建立流暢的跨平台同步及執行 AI 驅動的自動化工作流，我們僅收集以下類型的必要數據：</p>
+                <ol>
+                    <li><strong>帳戶識別基本資料：</strong>用戶姓名、職業或個人電子郵件地址、登入憑證，以及經用戶明確授權整合的第三方平台（例如 Google、Microsoft、Slack 或相關 SaaS 工具）的 OAuth 驗證權限與安全密鑰（Tokens）。</li>
+                    <li><strong>整合與同步之業務內容：</strong>用戶主動配置並授權 SyncBuddy 處理的第三方相連應用程式內之中介數據（Metadata）與文本資訊（如行事曆日程、任務狀態、工作看板、商務筆記及項目代碼倉紀錄）。</li>
+                    <li><strong>平台運行與審計指標：</strong>互聯網協議（IP）地址、瀏覽器規格、操作系統版本，以及用戶在 SyncBuddy 儀表板內的操作互動日誌。</li>
+                </ol>
+
+                <h3>1.2 核心數據架構與 AI 處理原則</h3>
+                <p>SyncBuddy 運用大型語言模型（LLMs）對散落的工作流進行結構化與摘要處理。我們承諾並嚴格執行以下工程底線：</p>
+                <table class="doc-table">
+                    <thead><tr><th>核心原則</th><th>技術與合規實施標準</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>數據最小化</strong></td><td>系統僅抓取滿足用戶預設同步規則所需的精確 Payload 數據欄位。我們絕不緩存、複製、或非法留存用戶完整的第三方資料庫。</td></tr>
+                        <tr><td><strong>AI 模型零訓練</strong></td><td>SyncBuddy 絕不利用任何客戶的隱私數據、提示詞歷史（Prompt History）或同步內容來訓練、微調（Fine-tune）任何公開或第三方的 AI 基礎模型。所有與底層大模型供應商的對接均採用企業級專用 API，強制執行嚴格的數據端點隔離。</td></tr>
+                        <tr><td><strong>最高級別加密</strong></td><td>所有資訊在傳輸途中一律強制使用傳輸層安全協議（TLS 1.3）加密，於伺服器靜態存儲時採用高級加密標準（AES-256）。</td></tr>
+                    </tbody>
+                </table>
+
+                <h3>1.3 數據共享與第三方分包商（Subprocessors）明細</h3>
+                <p>我們承諾絕不將您的個人、團隊或企業數據出售、出租或用於非本平台核心功能的商業變現活動。您同意並授權 SyncBuddy 僅在向您提供同步服務所必需的前提下，將數據分享給以下特定次要處理商。我們已與其簽署數據處理協議（DPA）以確保其合規表現：</p>
+                <ul>
+                    <li><strong>基礎設施供應商：</strong>Amazon Web Services (AWS), Google Cloud Platform (GCP)。</li>
+                    <li><strong>大型語言模型（LLM）供應商：</strong>OpenAI LLC, Anthropic PBC（本平台僅調用其企業級專用且承諾不進行數據訓練之 API 端點）。</li>
+                </ul>
+                <div class="callout"><strong>動態更新清單：</strong>完整的次要處理商名稱、處理目的及所在地點，請參閱我們的動態更新頁面：<a href="/subprocessors">https://syncbuddy.ai/subprocessors</a>。我們在更換或增加次要處理商前 30 日將通過站內信或電郵通知您。</div>
+            </section>
+
+            <section class="policy-section" id="terms">
+                <h2>用戶服務條款 <small>Terms of Service</small></h2>
+                <p>當您建立 SyncBuddy 帳戶、部署我們的自動化 Webhooks 或激活網站內提供的任何功能時，即代表您已無條件閱讀並同意遵守本用戶服務條款。</p>
+                <h3>2.1 註冊資格與帳戶安全</h3>
+                <p>您必須年滿十六（16）周歲（適用於歐盟 GDPR 等法區）方可建立有效帳戶。若您位於中華人民共和國境內，則須適用第四條之亞太地區特殊規定（即不滿 14 周歲禁止使用，14 至 18 周歲須取得監護人同意）。若法律對您所在地區有更嚴格的成年或法定承諾年齡要求，以該最嚴格法律標準為準。若您代表某一法人實體或企業註冊，您保證您已取得合法的代理權利。</p>
+                <p>SyncBuddy 負責維持平台側的系統級安全，包括提供多因素驗證（MFA）支持、異常登入監測及傳輸加密防護。用戶應妥善保管自身的帳戶憑證與 OAuth 密鑰。因用戶自身故意或疏忽（如洩露密碼、未妥善保管 Token）導致的權限洩露與損失，由用戶自行承擔；但若因本平台違反法定的合理安全防護義務而導致數據洩漏，本平台應承擔相應的法律責任。</p>
+                <h3>2.2 合理使用規範 (Acceptable Use Framework)</h3>
+                <p>您承諾僅將 SyncBuddy 用於合法的商業與個人生產力提升目的。您明確同意不得做出以下行為：</p>
+                <ol>
+                    <li>試圖繞過、試探或破解 SyncBuddy 或任何相連第三方 SaaS 平台的安全防禦網、認證機制或速率限制體系（Rate-Limits）。</li>
+                    <li>利用本平台同步或傳輸任何侵犯他人知識產權、商業秘密或違反適用地區數據隱私法規的非法、侵權或惡意內容。</li>
+                    <li>實施惡意的自動化高頻查詢、網絡爬蟲或進行非授權的壓力測試，蓄意干擾本平台伺服器的正常運行。</li>
+                </ol>
+                <div class="callout"><strong>違規強制執行：</strong>任何經系統判定違反合理使用規範的行為，本平台有權單方面實施即時、不可逆的帳戶凍結或終止處置，且用戶無權要求退還已繳納的任何訂閱費用。</div>
+                <h3>2.3 訂閱、自動續費與退款規則</h3>
+                <p>本平台的部分進階核心功能採取付費訂閱制（提供月費或年費結算選擇）。訂閱會在每個計費週期結束時自動續期，除非您提前透過後台控制台自主取消。若用戶在週期中途自主取消訂閱，當期已收取的費用不予退還，但服務將延續提供至該付費週期的最後一日為止。</p>
+                <p>依據相關網絡交易監督管理辦法及法規，針對自動續費服務，本平台承諾在自動續費扣款前五（5）日，通過電郵、短訊或站內信顯著方式提醒用戶，並於控制台內提供便捷的一鍵取消渠道。</p>
+                <h3>2.4 免責聲明與責任限制</h3>
+                <p>SYNCBUDDY AI 按「現狀（AS IS）」及「現有（AS AVAILABLE）」基礎提供。由於跨平台數據同步技術高度依賴第三方應用程式的 API 接口穩定性，我們不保證服務絕對不會出現中斷、時差延遲或同步漏失。在法律允許的最大範圍內（但排除因本平台故意或重大過失所導致的直接損失），SyncBuddy 概不承擔任何間接、附隨、懲罰性或衍生性的利潤、商業信譽或數據遺失賠償責任。</p>
+            </section>
+
+            <section class="policy-section" id="deletion">
+                <h2>用戶數據刪除政策 <small>User Data Deletion Policy</small></h2>
+                <p>SyncBuddy 堅定保障用戶的數位遺忘權。不論您何時決定終止使用，我們均提供便捷的自助管道與人工合規通路，確保您的隱私數據從我們的物理與虛擬存儲空間中得到徹底清除。</p>
+                <h3>3.1 自助式即時帳戶註銷流程</h3>
+                <p>用戶可在任何時間點，透過後台管理面板自行觸發絕對抹除程序，步驟如下：</p>
+                <ol>
+                    <li>登入您的官方帳戶後台（<a href="/">https://syncbuddy.ai</a>）。</li>
+                    <li>點擊導覽列的 Settings（設定），隨後切換至 Privacy &amp; Security（隱私與安全）區塊。</li>
+                    <li>下拉至頁面底部找到「Terminate Account &amp; Purge Data」（註銷帳戶與清除數據）功能。</li>
+                    <li>仔細閱讀引發的工作流全面中斷警告，並在文本框中輸入您綁定的註冊電子郵件地址，點擊確認。</li>
+                </ol>
+                <h3>3.2 人工手動刪除申請通道</h3>
+                <p>若您遇到介面無法正常加載，或作為企業管理者需要整批註銷團隊帳戶，您可以使用註冊電子郵件向我們的數據保護部門發送正式郵件：</p>
+                <ul>
+                    <li><strong>數據保護與合規信箱：</strong><a href="mailto:privacy@syncbuddy.ai">privacy@syncbuddy.ai</a></li>
+                    <li><strong>郵件法定主題：</strong>Data Deletion Request - [附上您的註冊帳戶郵箱]</li>
+                </ul>
+                <p>我們的合規官員將在接獲郵件並通過雙因子身份核實後的十五（15）個工作日內執行完畢，並手動從後端數據庫集群調用硬刪除（Hard Delete）指令。</p>
+                <h3>3.3 後端技術抹除時程與範疇</h3>
+                <p>一經確認執行數據擦除，SyncBuddy 將啟動不可逆的後端管道，從生產環境、動態數據庫及備份系統中徹底刪除與物理覆寫數據，其抹除時間表如下表所示：</p>
+                <table class="doc-table">
+                    <thead><tr><th>數據類別</th><th>後端底層具體合規動作</th><th>技術執行完成時程</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>OAuth 金鑰與第三方憑證</strong></td><td>向 Google、Slack、Microsoft 等源頭應用接口發出強制註銷（Revoke）指令，並在本地庫中將金鑰串進行密碼學覆蓋抹除。</td><td>即時 (Real-time)</td></tr>
+                        <tr><td><strong>動態資料庫活躍紀錄</strong></td><td>硬性刪除用戶的個人檔案、同步歷史軌跡、配置的工作流邏輯與群組關係表，不留任何指針。</td><td>24 小時內</td></tr>
+                        <tr><td><strong>災難復原防護備份</strong></td><td>進入冷備份與滾動式加密磁盤組的自然過期與物理覆寫流程。還原系統亦預設了被銷毀用戶的自動攔截黑名單。</td><td>最多 30 天內</td></tr>
+                    </tbody>
+                </table>
+                <h3>3.4 數據保留期限 (Data Retention Period)</h3>
+                <p>依據數據安全與個人信息保護儲存最小化原則：</p>
+                <ul>
+                    <li><strong>帳戶存續期間：</strong>在用戶未註銷帳戶前，我們將持續保留您的帳戶基本資料與配置數據，以維持服務運作。</li>
+                    <li><strong>帳戶註銷後：</strong>一旦觸發註銷，您的個人身分數據及業務同步內容將在上述 3.3 技術時程內徹底移除。</li>
+                    <li><strong>法律與審計日誌保留：</strong>為了符合網絡安全日誌留存之法定強制義務（如法規規定的日誌留存要求），平台的網絡運行日誌（Audit Logs）及交易憑證將在後端加密隔離留存六（6）至二十四（24）個月。該等數據僅用於法律合規與安全審計目的，期滿後立即銷毀。</li>
+                </ul>
+            </section>
+
+            <section class="policy-section" id="apac">
+                <h2>亞太特定地區法律修正案 <small>Regional Addendum</small></h2>
+                <p>本章節構成 SyncBuddy 整體政策不可分割的一部分，專門針對在香港特別行政區與中國內地訪問或使用本服務的用戶，依據當地核心隱私與數據安全法律進行法規對接與最優化補強。</p>
+                <div class="callout"><strong>適用法規依據：</strong>香港法例第 486 章《個人資料（私隱）條例》（PDPO）；中華人民共和國《個人信息保護法》（PIPL）、《數據安全法》（DSL）。</div>
+                <h3>4.1 香港特別行政區合規條款（依據 PDPO）</h3>
+                <p><strong>直接促銷（Direct Marketing）限制：</strong>依據《私隱條例》之保障資料原則，SyncBuddy 承諾：未經您明確的選擇同意（Opt-in），我們絕不將您的姓名和電子郵件用於任何促銷性質的郵件推廣或商業活動。您隨時可以無條件拒絕接收任何非核心系統通知。</p>
+                <p><strong>資料境外轉移聲明：</strong>鑑於人工智能運算基礎設施的全球分佈，您知悉並明確同意，您在本平台處理的部分資料可能會被轉移至、儲存於香港以外符合國際安全認證標準（如 ISO 27001, SOC2）的數據中心。我們將透過嚴格的企業間數據傳輸標準條款（STCs），確保其保護水平不低於香港 PDPO 的規範要求。</p>
+                <h3>4.2 中國內地合規條款（依據 PIPL 及生成式 AI 管理規範）</h3>
+                <p><strong>兒童個人信息保護（不滿 14 周歲）：</strong>本服務專為商業辦公與企業研發管理設計，不面向不滿 14 周歲的兒童。若系統偵測或有理由相信用戶不滿 14 周歲，將明令禁止註冊並拒絕提供服務。14 至 18 周歲的未成年人使用，系統將強制觸發「監護人同意與驗證機制」，用戶須提供監護人的聯絡方式，在取得監護人明示單獨同意後方可激活帳戶。</p>
+                <p><strong>數據出境合規路徑與單獨同意：</strong>凡是在中華人民共和國境內（不含港澳台）註冊並使用本服務的用戶，您理解並明確知悉且給予單獨同意：為了完成 AI 工作流提煉，您授權接入的數據將採用端到端 TLS 1.3 強密碼通道出境傳輸至本平台的全球安全雲伺服器與 AI 專用企業級端點。SyncBuddy 作為個人信息處理者，承諾將依據《個人信息出境標準合同辦法》，與境外接收方簽署網信辦發佈的《標準合同》（SCC）並向所在地省級網信部門完成備案，全面履行法定合規義務。</p>
+                <p><strong>敏感個人信息特殊保護：</strong>在您整合第三方筆記或日誌時，若其中不可避免地包含了中國境內法規所定義的「敏感個人信息」（如特定財務帳號、身份標識等），本平台聲明：我們僅依據您的同步指令進行全自動化串接與管道傳輸，本平台絕不對該等敏感信息進行任何主動的、超範圍的提取、標籤化分類或持久化二次留存。</p>
+                <p><strong>算法透明度、自動化決策與生成式 AI 合規：</strong></p>
+                <ul>
+                    <li><strong>算法與人工覆核權：</strong>SyncBuddy 的 AI 功能（如摘要、排程）屬於輔助工具。依據 PIPL 第 24 條，若用戶認為本平台之自動化處理結果對其權益產生重大影響，用戶有權通過 <a href="mailto:privacy@syncbuddy.ai">privacy@syncbuddy.ai</a> 要求人工覆核，或拒絕僅通過自動化決策方式作出的決定。本平台算法規則公開透明，絕不利用自動化決策實施不合理的差別待遇。</li>
+                    <li><strong>生成式 AI 特殊義務：</strong>依據《生成式人工智能服務管理暫行辦法》，本平台：（1）執行人工智能生成內容（AIGC）顯著標識義務，所有 AI 輸出之文本或排程均帶有系統生成標記；（2）用戶須綁定手機號碼或進行真實身份信息認證（實名制）方可使用中國境內服務；（3）我們承諾訓練數據及模型來源均具備合法合規來源。</li>
+                </ul>
+                <h3>4.3 數據當事人權利（DSAR）行使細節</h3>
+                <p>無論您位於何處，您對您的個人信息享有完整的法定權利。您可通過 <a href="mailto:privacy@syncbuddy.ai">privacy@syncbuddy.ai</a> 行使以下權利：查閱權、複製權、更正權、刪除權（遺忘權）、限制處理權、以及數據可攜權。</p>
+                <ul>
+                    <li><strong>身份核實：</strong>為保障數據安全，我們在收到請求後，將通過註冊電郵雙因子驗證或要求提供帳戶持有證明以核實您的身份。</li>
+                    <li><strong>響應時限：</strong>我們將在收到有效請求並核實身份後的十五（15）個工作日內（或最長不超過適用當地法律之法定時限）給予正式答覆並執行完畢。</li>
+                    <li><strong>拒絕或收費機制：</strong>針對明顯重複、惡意索取或超出合理範疇的請求，本平台保留收取合理行政成本費用或依法拒絕說明的權利（如涉及進行中的法律訴訟或商業秘密保護）。</li>
+                </ul>
+            </section>
+
+            <section class="policy-section" id="law">
+                <h2>準據法與爭議解決 <small>Governing Law &amp; Dispute Resolution</small></h2>
+                <p><strong>準據法：</strong>本協議的訂立、效力、解釋、履行及爭議解決均適用香港特別行政區法律。</p>
+                <p><strong>爭議解決（仲裁條款）：</strong>任何因本協議引起的或與本協議有關的爭議，雙方應首先通過友好協商解決。若自爭議發生之日起三十（30）日內未能協商解決，任何一方均有權將爭議提交至香港國際仲裁中心（HKIAC），按照提請仲裁時現行有效的 HKIAC 仲裁規則在香港進行最終且具約束力的仲裁。仲裁裁決是終局的，對雙方均有約束力。</p>
+                <p><strong>集體訴訟豁免（Class Action Waiver）：</strong>在適用法律允許的最大範圍內，您與 SyncBuddy 同意，任何因本服務引起的爭議均只能以個人名義提起，不得作為任何集體訴訟、代表訴訟或集體仲裁的原告或機構成員參與。</p>
+                <p><strong>語言與效力：</strong>本協議之章節標題僅為閱讀方便而設，不具法律解釋效力。本協議以中文版本為準；如中、英文版本之間有任何歧義或衝突，應以中文版本為準。</p>
+            </section>
+
+        </div>
+
+        <div class="policy-foot">
+            <span>© 2026 SyncBuddy AI. All Rights Reserved.</span>
+            <span>問題與回饋：<a href="mailto:privacy@syncbuddy.ai">privacy@syncbuddy.ai</a></span>
+        </div>
+    </main>
+
+    <footer>
+        <span>SyncBuddy Tech Limited · 2026</span>
+        <a href="https://syncbuddyai.com">syncbuddyai.com</a>
+    </footer>
+    <script src="home.js"></script>
+</body>
+</html>
