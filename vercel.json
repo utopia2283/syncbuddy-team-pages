@@ -1,8 +1,25 @@
 {
+  "builds": [{ "src": "**/*", "use": "@vercel/static" }],
   "rewrites": [
-    { "source": "/match", "destination": "/match-fan.html" },
-    { "source": "/calvin", "destination": "/calvin-tse.html" },
-    { "source": "/kenneth", "destination": "/kenneth-lui.html" },
-    { "source": "/carine", "destination": "/carine-tam.html" }
+    { "source": "/demo", "destination": "/demo/index.html" },
+    { "source": "/demo/", "destination": "/demo/index.html" },
+    { "source": "/match", "destination": "/match.html" },
+    { "source": "/match/", "destination": "/match.html" },
+    { "source": "/calvin", "destination": "/calvin.html" },
+    { "source": "/calvin/", "destination": "/calvin.html" },
+    { "source": "/kenneth", "destination": "/kenneth.html" },
+    { "source": "/kenneth/", "destination": "/kenneth.html" },
+    { "source": "/carine", "destination": "/carine.html" },
+    { "source": "/carine/", "destination": "/carine.html" },
+    { "source": "/qr", "destination": "/qrcode.html" },
+    { "source": "/qr/", "destination": "/qrcode.html" },
+    { "source": "/match-fan", "destination": "/match-fan.html" },
+    { "source": "/match-fan/", "destination": "/match-fan.html" },
+    { "source": "/calvin-tse", "destination": "/calvin-tse.html" },
+    { "source": "/calvin-tse/", "destination": "/calvin-tse.html" },
+    { "source": "/kenneth-lui", "destination": "/kenneth-lui.html" },
+    { "source": "/kenneth-lui/", "destination": "/kenneth-lui.html" },
+    { "source": "/carine-tam", "destination": "/carine-tam.html" },
+    { "source": "/carine-tam/", "destination": "/carine-tam.html" }
   ]
 }

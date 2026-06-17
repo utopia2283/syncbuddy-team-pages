@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>范景誠 Match Fan - 電子名片</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&family=Montserrat:wght@700;900&family=Noto+Sans+TC:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="card-container" id="cardContainer">
+        <!-- Card will be rendered here -->
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        // Auto-load Match's demo data
+        document.addEventListener('DOMContentLoaded', function() {
+            const matchData = {
+                "nameZh": "范景誠",
+                "nameEn": "Match Fan",
+                "titleZh": "首席自主智能體架構師",
+                "titleEn": "Chief Autonomous Agent Architect",
+                "company": "SyncBuddy",
+                "website": "https://syncbuddyai.com",
+                "email": "Match@syncbuddyai.com",
+                "phoneHK": "+852 5588 8830",
+                "phoneCN": "+86 130 6847 8223",
+                "address": "尖沙咀冠華中心603室",
+                "photoUrl": "match-photo-20260509.jpg",
+                "quote": "摒棄艱澀代碼，專注商業變現與投資回報 (ROI)",
+                "track1Title": "中銀香港 2024 創新先鋒 AI 大賽",
+                "track1Desc": "領軍團隊榮獲 創新設計銀獎",
+                "track2Title": "政企級戰略智囊",
+                "track2Desc": "聯手 EY (安永) 為香港機電工程署提供高階 AI 培訓",
+                "track3Title": "AI 落地顧問服務",
+                "track3Desc": "已為超過 30 家香港企業 及機構提供服務",
+                "track4Title": "中國管理科學研究院",
+                "track4Desc": "曾任 委任專家",
+                "badge1": "人工智能應用協會 會長",
+                "badge1Type": "association",
+                "badge2": "新界總商會 董事",
+                "badge2Type": "business",
+                "badge3": "香港青年新創見 副會長",
+                "badge3Type": "business"
+            };
+            
+            const container = document.getElementById('cardContainer');
+            if (container) {
+                renderCard(matchData, container);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,215 +1,274 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Business Card Builder</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&family=Montserrat:wght@700;900&family=Noto+Sans+TC:wght@700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="SyncBuddy Tech Limited builds AI models and platforms for business and society needs.">
+    <title>SyncBuddy Tech Limited · Your AI Buddy</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="home.css">
 </head>
 <body>
-    <script>
-    (function() {
-        var path = window.location.pathname.replace(/\/$/, '');
-        var redirects = {
-            '/match': '/match-fan.html',
-            '/calvin': '/calvin-tse.html',
-            '/kenneth': '/kenneth-lui.html',
-            '/carine': '/carine-tam.html'
-        };
-        if (redirects[path]) {
-            window.location.href = redirects[path];
-        }
-    })();
-    </script>
-    <div class="form-page">
-        <div class="form-header">
-            <h1>Digital Business Card Builder</h1>
-            <p>Create your professional digital business card in seconds</p>
-        </div>
+    <div class="cursor-glow" aria-hidden="true"></div>
+    <header class="site-header">
+        <a class="brand" href="/" aria-label="SyncBuddy home">
+            <img src="logo.png" alt="SyncBuddy logo">
+            <span>
+                <strong>SyncBuddy</strong>
+                <small>Tech Limited</small>
+            </span>
+        </a>
+        <nav aria-label="Primary navigation">
+            <a href="#about" data-i18n="nav.about">About Us</a>
+            <a href="#products" data-i18n="nav.products">Products</a>
+            <a href="#team" data-i18n="nav.team">Core Team</a>
+            <a href="#news" data-i18n="nav.news">News</a>
+            <a href="#contact" data-i18n="nav.contact">Contact</a>
+            <a href="/demo/" class="nav-demo" data-i18n="nav.demo">Try Demo</a>
+            <button class="lang-toggle" type="button" aria-label="Switch language" aria-pressed="false">
+                <span data-lang-option="en">EN</span>
+                <span data-lang-option="zh">中</span>
+            </button>
+        </nav>
+    </header>
 
-        <form id="cardForm">
-            <!-- Basic Info Section -->
-            <div class="form-section">
-                <div class="form-section-title">Basic Information</div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="nameZh">Name (Chinese) *</label>
-                        <input type="text" id="nameZh" placeholder="範景誠" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="nameEn">Name (English) *</label>
-                        <input type="text" id="nameEn" placeholder="Match Fan" required>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="titleZh">Title (Chinese) *</label>
-                        <input type="text" id="titleZh" placeholder="首席自主智能體架構師" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="titleEn">Title (English) *</label>
-                        <input type="text" id="titleEn" placeholder="Chief Autonomous Agent Architect" required>
-                    </div>
-                </div>
-
-                <div class="form-row single">
-                    <div class="form-group">
-                        <label for="company">Company</label>
-                        <input type="text" id="company" placeholder="SyncBuddy">
-                    </div>
-                </div>
-
-                <div class="form-row single">
-                    <div class="form-group">
-                        <label for="photoUrl">Profile Photo URL</label>
-                        <input type="url" id="photoUrl" placeholder="https://example.com/photo.jpg">
-                    </div>
+    <main>
+        <section class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow" data-i18n="hero.eyebrow">SyncBuddy Tech Limited</p>
+                <h1><span>東風</span> DONG FENG</h1>
+                <p class="tagline" data-i18n="hero.tagline">Your AI Buddy</p>
+                <p class="hero-lede" data-i18n="hero.lede">We synchronize and add value to our stakeholders with AI, building models and platforms for business and society needs.</p>
+                <div class="hero-actions">
+                    <a class="btn primary" href="#about" data-i18n="cta.about">About Us</a>
+                    <a class="btn secondary" href="/demo/" data-i18n="cta.try">Try Demo</a>
                 </div>
             </div>
 
-            <!-- Contact Section -->
-            <div class="form-section">
-                <div class="form-section-title">Contact Information</div>
-
-                <div class="form-row single">
-                    <div class="form-group">
-                        <label for="website">Website</label>
-                        <input type="url" id="website" placeholder="https://syncbuddyai.com">
+            <div class="hero-system tilt-card" aria-label="Dong Feng product preview">
+                <div class="card-outer-glow"></div>
+                <div class="card-inner-glow"></div>
+                <div class="scanline"></div>
+                <div class="data-stream">01000100 01001111 01001110 01000111</div>
+                <div class="data-stream">01010011 01011001 01001110 01000011</div>
+                <div class="system-top">
+                    <div>
+                        <span class="status-dot"></span>
+                        <span data-i18n="radar.title">Zhang Liang Radar</span>
                     </div>
+                    <strong>LIVE</strong>
                 </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" placeholder="Match@syncbuddyai.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="phoneHK">Phone (HK)</label>
-                        <input type="tel" id="phoneHK" placeholder="+852 5588 8830">
-                    </div>
+                <div class="signal-row urgent">
+                    <span data-i18n="radar.risk">Client churn risk</span>
+                    <strong>68%</strong>
+                    <small data-i18n="radar.early">18 days early</small>
                 </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="phoneCN">Phone (CN)</label>
-                        <input type="tel" id="phoneCN" placeholder="+86 130 6847 8223">
+                <div class="graph">
+                    <i style="height: 34%"></i>
+                    <i style="height: 42%"></i>
+                    <i style="height: 38%"></i>
+                    <i style="height: 56%"></i>
+                    <i style="height: 50%"></i>
+                    <i style="height: 72%"></i>
+                    <i style="height: 64%"></i>
+                    <i style="height: 84%"></i>
+                </div>
+                <div class="chat-card">
+                    <div class="chat-head">
+                        <span class="avatar">東</span>
+                        <div>
+                            <strong>東風 · 張良軍師</strong>
+                            <small data-i18n="radar.alert">WhatsApp proactive alert</small>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="address">Address</label>
-                        <input type="text" id="address" placeholder="尖沙咀冠華中心603室">
-                    </div>
+                    <p data-i18n="radar.message">不要 cold call。先發三步保溫訊息，T+14 才是最佳狙擊窗口。</p>
+                    <button type="button" data-i18n="radar.button">One-tap action sequence</button>
                 </div>
             </div>
+        </section>
 
-            <!-- Quote Section -->
-            <div class="form-section">
-                <div class="form-section-title">Quote / Motto</div>
-                <div class="form-row single">
-                    <div class="form-group">
-                        <label for="quote">Your Personal Quote</label>
-                        <textarea id="quote" placeholder="摒棄艱澀代碼，專注商業變現與投資回報 (ROI)"></textarea>
+        <section class="section about-section" id="about">
+            <p class="section-kicker" data-i18n="about.kicker">About Us</p>
+            <div class="about-layout">
+                <div class="about-copy">
+                    <h2>SyncBuddy Tech Limited</h2>
+                    <p class="about-tagline">Your AI Buddy</p>
+                    <div class="statement-grid">
+                        <article>
+                            <span data-i18n="about.mission.title">Our Mission</span>
+                            <p data-i18n="about.mission.body">We synchronize and add value to our stakeholders with AI.</p>
+                        </article>
+                        <article>
+                            <span data-i18n="about.product.title">Our Product</span>
+                            <p data-i18n="about.product.body">We build AI models or platforms for business or society needs.</p>
+                        </article>
+                    </div>
+                    <div class="zh-copy">
+                        <p data-i18n="about.mission.zh">使命：我們透過人工智能為持份者創造價值，解決痛點、發掘新商機與增長動力、提高效能、帶來價值。</p>
+                        <p data-i18n="about.product.zh">產品：我們針對商業或社會需求，構建人工智慧模型或平台，包括 AI 學習平台、AI ERP、AI 情緒治療師等。</p>
                     </div>
                 </div>
-            </div>
-
-            <!-- Track Records Section -->
-            <div class="form-section">
-                <div class="form-section-title">Track Records (up to 4)</div>
-
-                <div class="track-record-input">
-                    <input type="text" id="track1Title" placeholder="Achievement Title">
-                    <input type="text" id="track1Desc" placeholder="Description">
-                </div>
-
-                <div class="track-record-input">
-                    <input type="text" id="track2Title" placeholder="Achievement Title">
-                    <input type="text" id="track2Desc" placeholder="Description">
-                </div>
-
-                <div class="track-record-input">
-                    <input type="text" id="track3Title" placeholder="Achievement Title">
-                    <input type="text" id="track3Desc" placeholder="Description">
-                </div>
-
-                <div class="track-record-input">
-                    <input type="text" id="track4Title" placeholder="Achievement Title">
-                    <input type="text" id="track4Desc" placeholder="Description">
+                <div class="video-frame" aria-label="SyncBuddy video">
+                    <iframe src="https://www.youtube.com/embed/F8Y4KIbx_5w" title="SyncBuddy Tech Limited video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 </div>
             </div>
+        </section>
 
-            <!-- Badges Section -->
-            <div class="form-section">
-                <div class="form-section-title">Association / Title Badges (up to 3)</div>
+        <section class="section products" id="products">
+            <div class="section-heading">
+                <p class="section-kicker" data-i18n="products.kicker">Our Products</p>
+                <h2 data-i18n="products.heading">AI platforms for real business and social needs</h2>
+            </div>
+            <div class="product-grid">
+                <article class="product-card featured">
+                    <span>3.1</span>
+                    <h3>東風 造王者</h3>
+                    <p class="product-subtitle" data-i18n="product.dongfeng.subtitle">創業者 AI 軍師</p>
+                    <p data-i18n="product.dongfeng.body1">專為創業者而設的 AI 一體化平台，以 WhatsApp、微信等日常通訊軟件為入口，讓每一個商業難題及決策都能在對話中解決。</p>
+                    <p data-i18n="product.dongfeng.body2">有效益的獲客工具，結合主動預警、因果分析、時機判斷與行動序列。</p>
+                    <a class="inline-link" href="/demo/" data-i18n="product.dongfeng.link">Try Dong Feng Demo</a>
+                </article>
+                <article class="product-card">
+                    <span>3.2</span>
+                    <h3>SyncBuddy Institute</h3>
+                    <p data-i18n="product.institute.body">針對專業機構合規培訓的 AI 學習平台，解決代學詐騙、法規更新滯後及雲端監考私隱風險。</p>
+                    <ul>
+                        <li data-i18n="product.institute.li1">Verify: Edge-Guard SDK for privacy-preserving identity verification.</li>
+                        <li data-i18n="product.institute.li2">Generate: regulatory RAG engine turning PDFs into interactive assessments.</li>
+                        <li data-i18n="product.institute.li3">Simulate: synthetic data simulation for audit, risk and medical case training.</li>
+                        <li data-i18n="product.institute.li4">Edge AI: 100% browser-local inference via TensorFlow.js / WASM, with no video streaming or storage.</li>
+                    </ul>
+                </article>
+                <article class="product-card">
+                    <span>3.3</span>
+                    <h3>Sync Customs</h3>
+                    <p class="product-subtitle" data-i18n="product.customs.subtitle">Global Digital Preservation Platform for Traditional Chinese Culture & Rituals</p>
+                    <ul>
+                        <li data-i18n="product.customs.li1">Sync Rituals: 即時祈福及代燒模組，讓信眾跨越時空參與正宗廟宇祈福儀式。</li>
+                        <li data-i18n="product.customs.li2">Sync Destiny: 八字流年 AI 導師，生成具神聖感與個性化的流年報告。</li>
+                        <li data-i18n="product.customs.li3">Sync Jingzhe: AI 驚蟄打小人，將傳統習俗趣味遊戲化、數位化。</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
 
-                <div class="badge-row">
-                    <select id="badge1Type" class="badge-type-select">
-                        <option value="association">Association</option>
-                        <option value="business">Business</option>
-                    </select>
-                    <input type="text" id="badge1" placeholder="e.g., 人工智能應用協會 會長">
-                </div>
+        <section class="section team" id="team">
+            <div class="section-heading">
+                <p class="section-kicker" data-i18n="team.kicker">Core Team</p>
+                <h2 data-i18n="team.heading">Background-rich, battle-tested, deeply networked.</h2>
+            </div>
+            <div class="team-detail-grid" aria-label="Core team profiles">
+                <article class="leader-card">
+                    <div class="leader-top">
+                        <img class="profile-photo-carine-tam" src="carine-photo-20260509.jpg" alt="Carine Tam">
+                        <div>
+                            <span data-i18n="team.carine.title">Founder & CEO</span>
+                            <h3>Carine Tam 譚杏賢</h3>
+                            <p data-i18n="team.carine.zhrole">聯席創辦人兼首席執行官</p>
+                        </div>
+                    </div>
+                    <ul class="leader-bullets">
+                        <li data-i18n="team.carine.li1">具備豐富的頂層資本運作與資產併購經驗</li>
+                        <li data-i18n="team.carine.li2">精通香港上市法規與深具資深公司秘書專業</li>
+                        <li data-i18n="team.carine.li3">卓越的跨領域管理才能與高度的社會責任感</li>
+                    </ul>
+                    <p class="credential-list">HKICPA 香港會計師公會會計師 · HKACG 香港特許秘書及公司治理師 · MScISM (HKUST) · BBA (CUHK) · Rotary Club of Kwai Tsing CP · The Hong Kong Road Safety Association Deputy Chief Supervisor</p>
+                </article>
+                <article class="leader-card">
+                    <div class="leader-top">
+                        <img class="profile-photo-match-fan" src="match-photo-20260509.jpg" alt="Match Fan">
+                        <div>
+                            <span data-i18n="team.match.title">Co-Founder & CSO</span>
+                            <h3>Match Fan 范景誠</h3>
+                            <p data-i18n="team.match.zhrole">聯席創辦人兼首席策略官</p>
+                        </div>
+                    </div>
+                    <ul class="leader-bullets">
+                        <li data-i18n="team.match.li1">具備 15 年資深的企業治理與戰略風險管理經驗</li>
+                        <li data-i18n="team.match.li2">兼具前沿 AI 創新與商業價值轉化的雙棲領導力</li>
+                        <li data-i18n="team.match.li3">深具行業權威與國家級研究機構認證的戰略影響力</li>
+                    </ul>
+                    <p class="credential-list">AI Application Association President 人工智能應用協會會長 · New Territories General Chamber of Commerce Director 新界總商會董事 · Hong Kong InnoVision Vice President 香港青年新創見副會長</p>
+                </article>
+                <article class="leader-card">
+                    <div class="leader-top">
+                        <img class="profile-photo-calvin-tse" src="calvin-photo.jpg" alt="Calvin Tse">
+                        <div>
+                            <span data-i18n="team.calvin.title">Co-Founder</span>
+                            <h3>Calvin Tse 謝海發</h3>
+                            <p data-i18n="team.calvin.zhrole">聯席創辦人</p>
+                        </div>
+                    </div>
+                    <ul class="leader-bullets">
+                        <li data-i18n="team.calvin.li1">頂尖的財務與法律跨領域雙專業背景</li>
+                        <li data-i18n="team.calvin.li2">備受權威肯定的傑出青年企業家與商業領袖</li>
+                        <li data-i18n="team.calvin.li3">深厚的社會影響力與兩地政商公共服務經驗</li>
+                    </ul>
+                    <p class="credential-list">FCPA (Practising) · BBA (CUHK) · LLb (UOL) · Master of Chinese Law (Renmin University of China) · Forbes China Top 100 Outstanding Business Leaders 2022 · Ten Outstanding Young Persons of Hong Kong 2022 · HKICPA Vice President · Youth Development Commission, HKSAR · CPPCC Shandong Provincial Committee Member · State Taxation Administration (Hong Kong) Tax Expert</p>
+                </article>
+                <article class="leader-card">
+                    <div class="leader-top">
+                        <img src="kenneth-photo-20260509.jpg" alt="Kenneth Lui">
+                        <div>
+                            <span data-i18n="team.kenneth.title">Co-Founder & CBO</span>
+                            <h3>Kenneth Lui 雷琨傑</h3>
+                            <p data-i18n="team.kenneth.zhrole">聯席創辦人兼首席商務官</p>
+                        </div>
+                    </div>
+                    <ul class="leader-bullets">
+                        <li data-i18n="team.kenneth.li1">頂尖的衍生產品營銷實力與輝煌的業績紀錄，曾任職摩根大通 (J.P. Morgan)</li>
+                        <li data-i18n="team.kenneth.li2">兼具交易思維、數據分析與跨部門溝通的複合型能力</li>
+                        <li data-i18n="team.kenneth.li3">卓越的媒體公關與投資者關係維護經驗</li>
+                    </ul>
+                    <p class="credential-list">SFC Responsible Officer 香港證監會核准持牌負責人</p>
+                </article>
+            </div>
+        </section>
 
-                <div class="badge-row">
-                    <select id="badge2Type" class="badge-type-select">
-                        <option value="association">Association</option>
-                        <option value="business" selected>Business</option>
-                    </select>
-                    <input type="text" id="badge2" placeholder="e.g., 新界總商會 董事">
-                </div>
+        <section class="section news-section" id="news">
+            <div class="section-heading">
+                <p class="section-kicker" data-i18n="news.kicker">News & Events</p>
+                <h2 data-i18n="news.heading">消息與活動</h2>
+            </div>
+            <div class="news-panel">
+                <span>2026.5.19</span>
+                <strong data-i18n="news.title">Website refresh</strong>
+                <p data-i18n="news.body">SyncBuddy Tech Limited is expanding its company website to cover mission, product roadmap, core team, news and contact channels.</p>
+            </div>
+        </section>
 
-                <div class="badge-row">
-                    <select id="badge3Type" class="badge-type-select">
-                        <option value="association">Association</option>
-                        <option value="business" selected>Business</option>
-                    </select>
-                    <input type="text" id="badge3" placeholder="e.g., 香港青年新創見 副會長">
+        <section class="console-band" id="contact">
+            <div>
+                <p class="section-kicker" data-i18n="contact.kicker">Contact Us</p>
+                <h2 data-i18n="contact.heading">聯絡我們</h2>
+                <div class="contact-grid">
+                    <a href="mailto:info@syncbuddyai.com">info@syncbuddyai.com</a>
+                    <a href="tel:+85265883767">(852) 6588 3767</a>
+                    <a href="tel:+8617875343411">(86) 178 7534 3411</a>
+                    <a href="https://www.facebook.com/profile.php?id=61587035069654" target="_blank" rel="noreferrer">Facebook</a>
+                    <a href="https://www.instagram.com/syncbuddytech/" target="_blank" rel="noreferrer">Instagram</a>
                 </div>
             </div>
+            <a class="btn secondary dark" href="mailto:info@syncbuddyai.com">Email Us</a>
+        </section>
 
-            <!-- Actions -->
-            <div class="form-actions">
-                <button type="button" id="previewBtn" class="btn btn-secondary">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                        <circle cx="12" cy="12" r="3"/>
-                    </svg>
-                    Update Preview
-                </button>
-                <button type="button" id="shareBtn" class="btn btn-primary">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="18" cy="5" r="3"/>
-                        <circle cx="6" cy="12" r="3"/>
-                        <circle cx="18" cy="19" r="3"/>
-                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
-                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
-                    </svg>
-                    Generate Shareable Link
-                </button>
+        <section class="final-cta">
+            <p data-i18n="final.kicker">Your AI Buddy</p>
+            <h2 data-i18n="final.heading">Build the next practical AI platform with SyncBuddy Tech Limited.</h2>
+            <div class="hero-actions">
+                <a class="btn primary" href="/demo/" data-i18n="cta.try">Try Demo</a>
+                <a class="btn secondary" href="mailto:info@syncbuddyai.com" data-i18n="cta.contact">Contact Us</a>
             </div>
-        </form>
+        </section>
+    </main>
 
-        <!-- Demo Example Button -->
-        <div class="demo-section">
-            <a href="/match" target="_blank" class="btn btn-demo">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                </svg>
-                View Demo Example (範景誠)
-            </a>
-        </div>
-
-        <!-- Live Preview Section -->
-        <div class="preview-section" id="previewSection">
-            <h2>Live Preview</h2>
-            <div class="preview-container" id="previewContainer">
-                <!-- Preview will be rendered here -->
-            </div>
-        </div>
-    </div>
-
-    <script src="app.js"></script>
+    <footer>
+        <span>SyncBuddy Tech Limited · 2026</span>
+        <a href="https://syncbuddyai.com">syncbuddyai.com</a>
+    </footer>
+    <script src="home.js"></script>
 </body>
 </html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>謝海發 Calvin Tse - 電子名片</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&family=Montserrat:wght@700;900&family=Noto+Sans+TC:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="card-container" id="cardContainer">
+        <!-- Card will be rendered here -->
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const calvinData = {
+                "nameZh": "謝海發",
+                "nameEn": "Calvin Tse",
+                "titleZh": "Co-Founder & COO",
+                "titleEn": "Chief Operating Officer",
+                "company": "SyncBuddy",
+                "website": "https://syncbuddyai.com",
+                "email": "Calvin@syncbuddyai.com",
+                "phoneHK": "+852 9839 4050",
+                "phoneCN": "",
+                "address": "尖沙咀冠華中心603室",
+                "photoUrl": "calvin-photo.jpg",
+                "quote": "產業主權隔離樁，鎖定數據與 IP 產權的絕對安全",
+                "track1Title": "產業主權隔離樁",
+                "track1Desc": "負責構建「產業主權隔離樁」，鎖定數據與 IP 產權的絕對安全",
+                "track2Title": "大灣區政商核心樞紐",
+                "track2Desc": "山東省政協委員、珠海市金灣區政協常委，精準對接內地政府資源",
+                "track3Title": "2022 香港十大傑出青年",
+                "track3Desc": " Forbes 中國卓越領袖，具備豐富的實體產業營運經驗",
+                "track4Title": "社會創新領導力",
+                "track4Desc": "香港青年創業家總商會會長，導入創新人才與商業合作",
+                "badge1": "香港青年創業家總商會會長",
+                "badge1Type": "association",
+                "badge2": "山東省政協委員",
+                "badge2Type": "association",
+                "badge3": "執業資深會計師 FCPA",
+                "badge3Type": "business"
+            };
+
+            const container = document.getElementById('cardContainer');
+            if (container) {
+                renderCard(calvinData, container);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雷琨傑 Kenneth Lui - 電子名片</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;700&family=Montserrat:wght@700;900&family=Noto+Sans+TC:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="card-container" id="cardContainer">
+        <!-- Card will be rendered here -->
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const kennethData = {
+                "nameZh": "雷琨傑",
+                "nameEn": "Kenneth Lui",
+                "titleZh": "Co-Founder & CBO",
+                "titleEn": "Chief Business Officer",
+                "company": "SyncBuddy",
+                "website": "https://syncbuddyai.com",
+                "email": "Kenneth@syncbuddyai.com",
+                "phoneHK": "+852 6123 8155",
+                "phoneCN": "",
+                "address": "尖沙咀冠華中心603室",
+                "photoUrl": "kenneth-photo-20260509.jpg",
+                "quote": "將複雜技術產品轉化為高市佔率商品",
+                "track1Title": "11 年衍生產品銷量全港第一",
+                "track1Desc": "摩根大通任職期間（2013-2023）蟬聯衍生產品累計銷量全港第一",
+                "track2Title": "摩根大通執行董事",
+                "track2Desc": "深耕股权衍生工具市場逾 12 年，熟悉複雜金融產品設計與發行",
+                "track3Title": "MIT 數位行銷分析認證",
+                "track3Desc": "專精於數據驅動的市場增長策略，整合數位營銷生態系統",
+                "track4Title": "跨團隊資源整合",
+                "track4Desc": "將前沿 AI 技術轉化為可規模化的商業產品",
+                "badge1": "摩根大通執行董事",
+                "badge1Type": "business",
+                "badge2": "衍生產品銷量全港第一",
+                "badge2Type": "business",
+                "badge3": "MIT Sloan 數位行銷認證",
+                "badge3Type": "business"
+            };
+
+            const container = document.getElementById('cardContainer');
+            if (container) {
+                renderCard(kennethData, container);
+            }
+        });
+    </script>
+</body>
+</html>

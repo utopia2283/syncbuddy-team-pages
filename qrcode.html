@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SyncBuddy - QR Code Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', 'Noto Sans TC', system-ui, sans-serif;
+            background: #08090a;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            color: #00E5FF;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+        }
+        .subtitle {
+            color: #8a8f98;
+            font-size: 14px;
+            margin-bottom: 40px;
+        }
+        .qr-container {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            margin: 0 auto;
+            display: inline-block;
+        }
+        .qr-image {
+            width: 280px;
+            height: 280px;
+            border-radius: 12px;
+        }
+        .logo-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 64px;
+            height: 64px;
+            background: #fff;
+            border-radius: 10px;
+            padding: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .logo-overlay img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .url-text {
+            color: #00E5FF;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 16px;
+            margin-top: 25px;
+            font-weight: 600;
+        }
+        .download-btn {
+            margin-top: 30px;
+            background: linear-gradient(135deg, #00E5FF 0%, #7170ff 100%);
+            color: #000;
+            border: none;
+            padding: 14px 40px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px rgba(0, 229, 255, 0.3);
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 40px rgba(0, 229, 255, 0.5);
+        }
+        .instructions {
+            color: #62666d;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SyncBuddy</h1>
+        <p class="subtitle">電子名片 QR Code</p>
+        
+        <div class="qr-container">
+            <img class="qr-image" src="https://api.qrserver.com/v1/create-qr-code/?size=280x280&data=https://card.syncbuddyai.com/match&ecc=H" alt="QR Code" />
+            <div class="logo-overlay">
+                <img src="logo.png" alt="Logo" />
+            </div>
+        </div>
+        
+        <p class="url-text">card.syncbuddyai.com/match</p>
+        
+        <button class="download-btn" onclick="downloadQR()">Download QR Code</button>
+        
+        <p class="instructions">QR Code 包含 logo，掃描即可直接打開電子名片</p>
+    </div>
+
+    <script>
+        function downloadQR() {
+            // Create canvas to combine QR and logo
+            const canvas = document.createElement('canvas');
+            canvas.width = 340;
+            canvas.height = 340;
+            const ctx = canvas.getContext('2d');
+            
+            // White background with rounded corners
+            ctx.fillStyle = '#ffffff';
+            ctx.beginPath();
+            ctx.roundRect(0, 0, 340, 340, 20);
+            ctx.fill();
+            
+            // Load and draw QR code
+            const qrImg = new Image();
+            qrImg.crossOrigin = 'anonymous';
+            qrImg.onload = function() {
+                ctx.drawImage(qrImg, 30, 30, 280, 280);
+                
+                // Load and draw logo
+                const logoImg = new Image();
+                logoImg.crossOrigin = 'anonymous';
+                logoImg.onload = function() {
+                    // Draw logo background
+                    ctx.fillStyle = '#ffffff';
+                    ctx.beginPath();
+                    ctx.roundRect(130, 130, 80, 80, 10);
+                    ctx.fill();
+                    
+                    // Draw logo
+                    ctx.drawImage(logoImg, 136, 136, 68, 68);
+                    
+                    // Download
+                    const link = document.createElement('a');
+                    link.download = 'syncbuddy-qrcode.png';
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                };
+                logoImg.src = 'logo.png';
+            };
+            qrImg.onerror = function() {
+                alert('Failed to load QR code');
+            };
+            qrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=280x280&data=https://card.syncbuddyai.com/match&ecc=H';
+        }
+    </script>
+</body>
+</html>
