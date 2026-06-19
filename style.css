@@ -800,7 +800,7 @@ body::after {
 }
 .card-container:has(.nc-wrap) { max-width: 474px; }
 
-/* animated gradient glow border + glass card */
+/* static gradient glow border + glass card (no rotation) */
 .nc-wrap {
     position: relative; width: 100%; max-width: 432px; margin: 0 auto;
     border-radius: 26px; font-family: var(--nc-font); color: var(--nc-fg);
@@ -808,16 +808,15 @@ body::after {
 }
 .nc-wrap::before {
     content: ''; position: absolute; inset: -2px; border-radius: 28px; z-index: 0;
-    background: conic-gradient(from 0deg, var(--nc-teal), var(--nc-cyan), var(--nc-aqua), #2E8BFF, var(--nc-teal));
-    filter: blur(14px); opacity: 0.5; animation: ncSpin 7s linear infinite;
+    background: linear-gradient(135deg, var(--nc-teal), var(--nc-cyan) 40%, var(--nc-aqua) 72%, #2E8BFF);
+    filter: blur(14px); opacity: 0.5;
 }
 .nc-wrap::after {
     content: ''; position: absolute; inset: -1px; border-radius: 27px; z-index: 0; padding: 1px;
-    background: conic-gradient(from 0deg, var(--nc-teal), var(--nc-cyan), var(--nc-aqua), #2E8BFF, var(--nc-teal));
+    background: linear-gradient(135deg, var(--nc-teal), var(--nc-cyan) 40%, var(--nc-aqua) 72%, #2E8BFF);
     -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor; mask-composite: exclude; animation: ncSpin 7s linear infinite;
+    -webkit-mask-composite: xor; mask-composite: exclude;
 }
-@keyframes ncSpin { to { transform: rotate(360deg); } }
 
 .nc-p {
     position: absolute; width: 4px; height: 4px; border-radius: 50%; background: var(--nc-teal);
@@ -862,7 +861,7 @@ body::after {
 
 .nc-hero { display: flex; gap: 18px; align-items: center; }
 .nc-photo-ring {
-    position: relative; width: 104px; height: 104px; flex-shrink: 0; border-radius: 20px; padding: 3px;
+    position: relative; width: 104px; height: 104px; flex-shrink: 0; border-radius: 50%; padding: 3px;
     background: linear-gradient(135deg, var(--nc-teal), var(--nc-aqua) 55%, var(--nc-cyan));
     animation: ncPhotoGlow 3.4s ease-in-out infinite;
 }
@@ -870,7 +869,7 @@ body::after {
     0%,100% { box-shadow: 0 0 16px rgba(0, 229, 255, 0.35); }
     50% { box-shadow: 0 0 30px rgba(0, 229, 255, 0.6); }
 }
-.nc-photo-inner { position: relative; width: 100%; height: 100%; border-radius: 17px; overflow: hidden; background: #0a1422; }
+.nc-photo-inner { position: relative; width: 100%; height: 100%; border-radius: 50%; overflow: hidden; background: #0a1422; }
 .nc-photo-inner img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .nc-photo-scan {
     position: absolute; inset: 0;
