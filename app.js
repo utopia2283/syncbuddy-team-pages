@@ -271,6 +271,7 @@ function renderCard(data, container) {
 
     const creds = buildCredentials(data);
     const showTrack = false; // Track Record section hidden (flip to true to show)
+    const showQuote = false; // Quote line hidden on all cards (flip to true to show)
     const track = showTrack ? buildTrack(data) : [];
     // Brand name: "SyncBuddy" (white) + remainder e.g. "Tech Limited" (blue)
     const coName = data.company || 'SyncBuddy';
@@ -352,7 +353,7 @@ function renderCard(data, container) {
         </div>
 
         <div class="nc-body">
-            ${data.quote ? `<div class="nc-quote">${escapeHtml(data.quote)}</div>` : ''}
+            ${(showQuote && data.quote) ? `<div class="nc-quote">${escapeHtml(data.quote)}</div>` : ''}
 
             ${creds.length ? `
             <div class="nc-sec-label">資歷 · Credentials</div>
