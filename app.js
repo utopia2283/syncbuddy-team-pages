@@ -326,9 +326,17 @@ function renderCard(data, container) {
     {
         const site = (data.footerWebsite || data.website || 'www.syncbuddy.ai').replace(/^https?:\/\//, '');
         contactRows.push(`
-        <div class="nc-ci nc-ci-full" onclick="window.open('https://${escapeHtml(site)}','_blank')">
-            <div class="nc-ci-lab">Website</div>
-            <div class="nc-ci-val">${escapeHtml(site)}</div>
+        <div class="nc-ci nc-ci-full nc-ci-web" onclick="window.open('https://${escapeHtml(site)}','_blank')">
+            <span class="nc-web-ic" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.5 2.5 15.5 0 18M12 3c-2.5 2.5-2.5 15.5 0 18"/></svg>
+            </span>
+            <div class="nc-web-main">
+                <div class="nc-ci-lab">Website</div>
+                <div class="nc-web-url">${escapeHtml(site)}</div>
+            </div>
+            <span class="nc-web-go" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+            </span>
         </div>`);
     }
     if (data.address) {
