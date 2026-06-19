@@ -363,7 +363,7 @@ function renderCard(data, container) {
                 <div class="nc-brand-name"><span class="nc-bw">${escapeHtml(coName)}</span> <span class="nc-bb">${escapeHtml(coRest)}</span></div>
             </div>
             <div class="nc-hero-id">
-                <div class="nc-name-zh">${escapeHtml(data.nameZh || '')}</div>
+                <div class="nc-name-zh"${data.nameZhPx ? ` style="font-size:${escapeHtml(data.nameZhPx)}"` : ''}>${escapeHtml(data.nameZh || '')}</div>
                 <div class="nc-name-en">${escapeHtml(data.nameEn || '')}</div>
                 <div class="nc-title">${escapeHtml(data.titleEn || '')}</div>
                 ${data.titleZh ? `<div class="nc-title-zh">${escapeHtml(data.titleZh)}</div>` : ''}
