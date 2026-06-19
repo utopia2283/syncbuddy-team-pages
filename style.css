@@ -930,6 +930,15 @@ body::after {
 }
 @keyframes ncShine { 0% { left: -60%; } 55%,100% { left: 130%; } }
 .nc-qr-btn svg { width: 19px; height: 19px; position: relative; z-index: 1; }
+.nc-yt-btn {
+    display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%;
+    border-radius: 13px; padding: 13px; font: inherit; font-size: 13.5px; font-weight: 700;
+    text-decoration: none; color: #fff; cursor: pointer; transition: 0.2s;
+    background: linear-gradient(120deg, #FF2D55, #FF0000 55%, #C4302B);
+    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.32);
+}
+.nc-yt-btn:hover { filter: brightness(1.07); transform: translateY(-1px); }
+.nc-yt-btn svg { width: 22px; height: 22px; }
 .nc-save-btn {
     display: flex; align-items: center; justify-content: center; gap: 9px; width: 100%;
     border-radius: 13px; padding: 12px; font: inherit; font-size: 13.5px; font-weight: 700; cursor: pointer;

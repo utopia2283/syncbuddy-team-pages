@@ -265,6 +265,9 @@ function renderCard(data, container) {
     const waPhone = (data.phoneHK || '').replace(/[^0-9]/g, '');
     const tags = Array.isArray(data.hashtags) && data.hashtags.length
         ? data.hashtags : ['#Synchronize', '#AI', '#KingMaker'];
+    // YouTube company-intro button (set data.youtubeUrl to "" on a card to hide)
+    const ytUrl = data.youtubeUrl !== undefined ? data.youtubeUrl : 'https://www.youtube.com/watch?v=F8Y4KIbx_5w';
+    const ytLabel = data.youtubeLabel || '公司簡介 · Company Intro';
 
     const contactRows = [];
     if (data.phoneHK) {
@@ -360,6 +363,13 @@ function renderCard(data, container) {
                 </svg>
                 掃描加我 · Scan my card
             </button>
+            ${ytUrl ? `
+            <a class="nc-yt-btn" href="${escapeHtml(ytUrl)}" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/>
+                </svg>
+                ${escapeHtml(ytLabel)}
+            </a>` : ''}
             <button class="nc-save-btn" id="ncSaveBtn" type="button">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                      stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
