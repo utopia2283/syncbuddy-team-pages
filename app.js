@@ -316,6 +316,9 @@ function renderCard(data, container) {
         <div class="nc-ci" onclick="copyToClipboard('${escapeHtml(data.wechat)}', this)">
             <div class="nc-ci-lab">WeChat</div>
             <div class="nc-ci-val">${escapeHtml(data.wechat)}</div>
+            <span class="nc-wc" aria-hidden="true" title="WeChat">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="#07C160"><path d="M8.69 4C4.7 4 1.5 6.66 1.5 9.94c0 1.9 1.06 3.59 2.72 4.7l-.55 1.72 2-1.04c.71.2 1.47.32 2.27.34a4.6 4.6 0 0 1-.2-1.35c0-2.86 2.77-5.18 6.2-5.18l.55.02C14.13 6.05 11.66 4 8.69 4zM6.3 8.49a.92.92 0 1 1 0-1.84.92.92 0 0 1 0 1.84zm4.78 0a.92.92 0 1 1 0-1.84.92.92 0 0 1 0 1.84z"/><path d="M22.5 14.6c0-2.66-2.62-4.82-5.85-4.82-3.32 0-5.95 2.16-5.95 4.82s2.63 4.82 5.95 4.82c.72 0 1.42-.12 2.07-.32l1.83.96-.5-1.6c1.5-1.04 2.45-2.5 2.45-3.86zm-7.78-.66a.74.74 0 1 1 0-1.48.74.74 0 0 1 0 1.48zm3.86 0a.74.74 0 1 1 0-1.48.74.74 0 0 1 0 1.48z"/></svg>
+            </span>
         </div>`);
     }
     if (data.address) {

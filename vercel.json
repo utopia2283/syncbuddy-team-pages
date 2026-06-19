@@ -40,35 +40,35 @@
     },
     {
       "source": "/match",
-      "destination": "/match.html"
+      "destination": "/match-fan.html"
     },
     {
       "source": "/match/",
-      "destination": "/match.html"
+      "destination": "/match-fan.html"
     },
     {
       "source": "/calvin",
-      "destination": "/calvin.html"
+      "destination": "/calvin-tse.html"
     },
     {
       "source": "/calvin/",
-      "destination": "/calvin.html"
+      "destination": "/calvin-tse.html"
     },
     {
       "source": "/kenneth",
-      "destination": "/kenneth.html"
+      "destination": "/kenneth-lui.html"
     },
     {
       "source": "/kenneth/",
-      "destination": "/kenneth.html"
+      "destination": "/kenneth-lui.html"
     },
     {
       "source": "/carine",
-      "destination": "/carine.html"
+      "destination": "/carine-tam.html"
     },
     {
       "source": "/carine/",
-      "destination": "/carine.html"
+      "destination": "/carine-tam.html"
     },
     {
       "source": "/qr",

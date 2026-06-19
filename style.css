@@ -922,6 +922,11 @@ body::after {
     display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(37, 211, 102, 0.3);
 }
 .nc-wa:hover { background: rgba(37, 211, 102, 0.24); transform: scale(1.08); }
+.nc-wc {
+    position: absolute; top: 9px; right: 9px; width: 28px; height: 28px; border-radius: 8px; pointer-events: none;
+    background: rgba(7, 193, 96, 0.14); border: 1px solid rgba(7, 193, 96, 0.4);
+    display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(7, 193, 96, 0.3);
+}
 
 /* --- footer / actions --- */
 .nc-footer {
