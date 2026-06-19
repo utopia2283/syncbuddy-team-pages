@@ -954,6 +954,22 @@ h2 {
     padding-left: 18px;
 }
 
+.gutsync-list li {
+    margin-bottom: 6px;
+}
+
+.gutsync-list strong {
+    display: block;
+    margin-bottom: 6px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.gutsync-list p {
+    margin: 0;
+}
+
 .inline-link {
     position: relative;
     z-index: 1;
