@@ -328,6 +328,7 @@ function renderCard(data, container) {
         <div class="nc-ci nc-ci-full" onclick="window.open('${escapeHtml(mapHref)}','_blank')">
             <div class="nc-ci-lab">Address</div>
             <div class="nc-ci-val">${escapeHtml(data.address)}</div>
+            ${data.addressEn ? `<div class="nc-ci-en">${escapeHtml(data.addressEn)}</div>` : ''}
         </div>`);
     }
 
