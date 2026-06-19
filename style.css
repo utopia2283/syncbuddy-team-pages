@@ -856,11 +856,9 @@ body::after {
     display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 1px var(--nc-border);
 }
 .nc-logo { width: 25px; height: 25px; object-fit: contain; }
-.nc-brand-name { font-size: 13px; font-weight: 800; color: #fff; text-shadow: 0 1px 6px rgba(0,0,0,0.6); }
-.nc-brand-sub {
-    font-size: 8.5px; font-weight: 700; letter-spacing: 0.18em; color: var(--nc-cyan);
-    text-transform: uppercase; margin-top: 2px; text-shadow: 0 1px 4px rgba(0,0,0,0.6);
-}
+.nc-brand-name { font-size: 14px; font-weight: 800; letter-spacing: 0.01em; text-shadow: 0 1px 6px rgba(0,0,0,0.6); }
+.nc-brand-name .nc-bw { color: #fff; }
+.nc-brand-name .nc-bb { color: var(--nc-cyan); }
 .nc-hero-id { position: absolute; left: 0; right: 0; bottom: 0; padding: 0 26px 18px; z-index: 2; }
 .nc-name-zh {
     font-family: var(--nc-serif); font-size: 34px; font-weight: 700; line-height: 1.02; color: #fff;

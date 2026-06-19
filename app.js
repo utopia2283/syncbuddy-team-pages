@@ -271,6 +271,10 @@ function renderCard(data, container) {
 
     const creds = buildCredentials(data);
     const track = buildTrack(data);
+    // Brand name: "SyncBuddy" (white) + remainder e.g. "Technology Limited" (blue)
+    const coName = data.company || 'SyncBuddy';
+    const coFull = data.companyFull || 'SyncBuddy Technology Limited';
+    const coRest = coFull.startsWith(coName) ? coFull.slice(coName.length).trim() : coFull;
     const url = cardURL(data);
     const mapHref = data.addressMapQuery ||
         ('https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(data.address || ''));
@@ -333,10 +337,7 @@ function renderCard(data, container) {
             <div class="nc-brand">
                 <div class="nc-logo-box"><img class="nc-logo" src="logo.png" alt="SyncBuddy"
                      onerror="this.style.visibility='hidden'"></div>
-                <div>
-                    <div class="nc-brand-name">${escapeHtml(data.company || 'SyncBuddy')}</div>
-                    <div class="nc-brand-sub">${escapeHtml(data.companyFull || 'SyncBuddy Technology Limited')}</div>
-                </div>
+                <div class="nc-brand-name"><span class="nc-bw">${escapeHtml(coName)}</span> <span class="nc-bb">${escapeHtml(coRest)}</span></div>
             </div>
             <div class="nc-hero-id">
                 <div class="nc-name-zh">${escapeHtml(data.nameZh || '')}</div>
