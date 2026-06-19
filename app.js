@@ -365,9 +365,8 @@ function renderCard(data, container) {
             ${track.length ? `
             <div class="nc-sec-label">核心戰績 · Track Record</div>
             <div class="nc-track">
-                ${track.map((t, i) => `
+                ${track.map((t) => `
                 <div class="nc-tr">
-                    <span class="nc-tr-num">${String(i + 1).padStart(2, '0')}</span>
                     <div class="nc-tr-body">
                         ${t.zh ? `<div class="nc-tr-zh">${escapeHtml(t.zh)}</div>` : ''}
                         ${t.en ? `<div class="nc-tr-en">${escapeHtml(t.en)}</div>` : ''}
