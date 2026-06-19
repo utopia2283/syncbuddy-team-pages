@@ -308,19 +308,28 @@ function renderCard(data, container) {
     }
 
     container.innerHTML = `
+    <div class="nc-wrap">
+    <span class="nc-p"></span><span class="nc-p"></span><span class="nc-p"></span><span class="nc-p"></span>
     <div class="nc">
+        <div class="nc-scan"></div>
         <div class="nc-top">
             <div class="nc-brand">
-                <img class="nc-logo" src="logo.png" alt="SyncBuddy"
-                     onerror="this.style.visibility='hidden'">
+                <div class="nc-logo-box"><img class="nc-logo" src="logo.png" alt="SyncBuddy"
+                     onerror="this.style.visibility='hidden'"></div>
                 <div>
                     <div class="nc-brand-name">${escapeHtml(data.company || 'SyncBuddy')}</div>
                     <div class="nc-brand-sub">${escapeHtml(data.companyFull || 'Sync Buddy Tech Limited')}</div>
                 </div>
             </div>
             <div class="nc-hero">
-                <img class="nc-photo" src="${escapeHtml(data.photoUrl || 'profile-photo.jpg')}"
-                     alt="${escapeHtml(data.nameEn || '')}" onerror="this.src='profile-photo.jpg'">
+                <div class="nc-photo-ring">
+                    <div class="nc-photo-inner">
+                        <img src="${escapeHtml(data.photoUrl || 'profile-photo.jpg')}"
+                             alt="${escapeHtml(data.nameEn || '')}" onerror="this.src='profile-photo.jpg'">
+                        <div class="nc-photo-scan"></div>
+                    </div>
+                    <div class="nc-plus"><svg viewBox="0 0 24 24" fill="none" stroke="#04222b" stroke-width="4" stroke-linecap="round"><path d="M5 12h14M12 5v14"/></svg></div>
+                </div>
                 <div class="nc-id">
                     <div class="nc-name-zh">${escapeHtml(data.nameZh || '')}</div>
                     <div class="nc-name-en">${escapeHtml(data.nameEn || '')}</div>
@@ -369,6 +378,7 @@ function renderCard(data, container) {
             </button>
             <div class="nc-tags">${tags.map(t => `<span>${escapeHtml(t)}</span>`).join('')}</div>
         </div>
+    </div>
     </div>
 
     <div class="nc-scrim" id="ncScrim" role="dialog" aria-modal="true"
