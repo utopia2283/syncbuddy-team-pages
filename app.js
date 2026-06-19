@@ -349,19 +349,6 @@ function renderCard(data, container) {
         <div class="nc-body">
             ${data.quote ? `<div class="nc-quote">${escapeHtml(data.quote)}</div>` : ''}
 
-            ${track.length ? `
-            <div class="nc-sec-label">核心戰績 · Track Record</div>
-            <div class="nc-track">
-                ${track.map((t, i) => `
-                <div class="nc-tr">
-                    <span class="nc-tr-num">${String(i + 1).padStart(2, '0')}</span>
-                    <div class="nc-tr-body">
-                        ${t.zh ? `<div class="nc-tr-zh">${escapeHtml(t.zh)}</div>` : ''}
-                        ${t.en ? `<div class="nc-tr-en">${escapeHtml(t.en)}</div>` : ''}
-                    </div>
-                </div>`).join('')}
-            </div>` : ''}
-
             ${creds.length ? `
             <div class="nc-sec-label">資歷 · Credentials</div>
             <ul class="nc-creds">
@@ -374,6 +361,19 @@ function renderCard(data, container) {
                     </div>
                 </li>`).join('')}
             </ul>` : ''}
+
+            ${track.length ? `
+            <div class="nc-sec-label">核心戰績 · Track Record</div>
+            <div class="nc-track">
+                ${track.map((t, i) => `
+                <div class="nc-tr">
+                    <span class="nc-tr-num">${String(i + 1).padStart(2, '0')}</span>
+                    <div class="nc-tr-body">
+                        ${t.zh ? `<div class="nc-tr-zh">${escapeHtml(t.zh)}</div>` : ''}
+                        ${t.en ? `<div class="nc-tr-en">${escapeHtml(t.en)}</div>` : ''}
+                    </div>
+                </div>`).join('')}
+            </div>` : ''}
 
             ${contactRows.length ? `
             <div class="nc-sec-label">聯絡 · Contact</div>
