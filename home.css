@@ -932,23 +932,18 @@ h2 {
     position: relative;
     z-index: 1;
     display: block;
-    margin: 16px 0 4px;
+    width: auto;
+    height: 104px;
+    margin: 16px 0 6px;
     object-fit: contain;
 }
 
 .product-logo.df {
-    height: 112px;
-    width: auto;
-    filter: drop-shadow(0 0 20px rgba(0, 229, 255, 0.28));
+    filter: drop-shadow(0 0 22px rgba(0, 229, 255, 0.32));
 }
 
 .product-logo.edu {
-    height: 66px;
-    width: auto;
-    padding: 8px 14px;
-    border-radius: 14px;
-    background: #ffffff;
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
+    filter: drop-shadow(0 0 22px rgba(0, 229, 255, 0.24));
 }
 
 .product-subtitle {
