@@ -91,7 +91,7 @@ function saveToContact(data) {
 VERSION:3.0
 N:${escapeHtml(cardData.nameZh || '')};${escapeHtml(cardData.nameEn || '')};;;
 FN:${escapeHtml(cardData.nameEn || cardData.nameZh || '')}
-ORG:${escapeHtml(cardData.companyFull || cardData.company || 'Sync Buddy Tech Limited')}
+ORG:${escapeHtml(cardData.companyFull || cardData.company || 'SyncBuddy Technology Limited')}
 TITLE:${escapeHtml(cardData.titleEn || cardData.titleZh || '')}
 TEL;TYPE=WORK,MSG:${escapeHtml(cardData.phoneHK || '')}
 TEL;TYPE=CELL:${escapeHtml(cardData.phoneCN || '')}
@@ -335,7 +335,7 @@ function renderCard(data, container) {
                      onerror="this.style.visibility='hidden'"></div>
                 <div>
                     <div class="nc-brand-name">${escapeHtml(data.company || 'SyncBuddy')}</div>
-                    <div class="nc-brand-sub">${escapeHtml(data.companyFull || 'Sync Buddy Tech Limited')}</div>
+                    <div class="nc-brand-sub">${escapeHtml(data.companyFull || 'SyncBuddy Technology Limited')}</div>
                 </div>
             </div>
             <div class="nc-hero-id">
