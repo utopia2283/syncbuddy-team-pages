@@ -180,8 +180,19 @@ function buildCredentials(data) {
     }
     const out = [];
     [data.badge1, data.badge2, data.badge3].filter(Boolean).forEach(b => out.push({ zh: b, en: '' }));
-    [[data.track1Title, data.track1DescEn], [data.track2Title, data.track2DescEn],
-     [data.track3Title, data.track3DescEn], [data.track4Title, data.track4DescEn]]
+    return out;
+}
+
+// Core achievements — rendered as a distinct "Track Record" section.
+function buildTrack(data) {
+    if (Array.isArray(data.track) && data.track.length) {
+        return data.track.map(t => ({ zh: t.zh || '', en: t.en || '' }));
+    }
+    const out = [];
+    [[data.track1Title, data.track1DescEn || data.track1Desc],
+     [data.track2Title, data.track2DescEn || data.track2Desc],
+     [data.track3Title, data.track3DescEn || data.track3Desc],
+     [data.track4Title, data.track4DescEn || data.track4Desc]]
         .filter(t => t[0]).forEach(([zh, en]) => out.push({ zh, en: en || '' }));
     return out;
 }
@@ -259,6 +270,7 @@ function renderCard(data, container) {
     window._currentCardData = data;
 
     const creds = buildCredentials(data);
+    const track = buildTrack(data);
     const url = cardURL(data);
     const mapHref = data.addressMapQuery ||
         ('https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(data.address || ''));
@@ -336,6 +348,19 @@ function renderCard(data, container) {
 
         <div class="nc-body">
             ${data.quote ? `<div class="nc-quote">${escapeHtml(data.quote)}</div>` : ''}
+
+            ${track.length ? `
+            <div class="nc-sec-label">核心戰績 · Track Record</div>
+            <div class="nc-track">
+                ${track.map((t, i) => `
+                <div class="nc-tr">
+                    <span class="nc-tr-num">${String(i + 1).padStart(2, '0')}</span>
+                    <div class="nc-tr-body">
+                        ${t.zh ? `<div class="nc-tr-zh">${escapeHtml(t.zh)}</div>` : ''}
+                        ${t.en ? `<div class="nc-tr-en">${escapeHtml(t.en)}</div>` : ''}
+                    </div>
+                </div>`).join('')}
+            </div>` : ''}
 
             ${creds.length ? `
             <div class="nc-sec-label">資歷 · Credentials</div>

@@ -892,6 +892,19 @@ body::after {
 .nc-cred-zh { font-size: 13.5px; font-weight: 600; color: var(--nc-fg); line-height: 1.35; }
 .nc-cred-en { font-size: 11px; color: var(--nc-muted); margin-top: 1px; line-height: 1.35; }
 
+/* --- Track Record (core achievements) — bolder, numbered --- */
+.nc-track { display: flex; flex-direction: column; gap: 14px; margin-bottom: 24px; }
+.nc-tr { display: flex; gap: 13px; align-items: flex-start; }
+.nc-tr-num {
+    font-family: var(--nc-font); font-size: 13px; font-weight: 800; font-variant-numeric: tabular-nums;
+    line-height: 1.2; flex-shrink: 0; width: 22px; padding-top: 1px;
+    background: linear-gradient(135deg, var(--nc-teal), var(--nc-aqua));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.nc-tr-body { position: relative; padding-left: 13px; border-left: 2px solid rgba(0, 229, 255, 0.28); }
+.nc-tr-zh { font-size: 14px; font-weight: 700; color: var(--nc-fg); line-height: 1.38; }
+.nc-tr-en { font-size: 11px; color: var(--nc-muted); margin-top: 2px; line-height: 1.4; letter-spacing: 0.01em; }
+
 /* --- contact --- */
 .nc-contact { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; margin-bottom: 8px; }
 .nc-ci {
