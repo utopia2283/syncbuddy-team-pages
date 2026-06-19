@@ -354,6 +354,7 @@ function renderCard(data, container) {
     <div class="nc">
         <div class="nc-hero">
             <img class="nc-hero-img" src="${escapeHtml(data.photoUrl || 'profile-photo.jpg')}"
+                 ${data.photoPos ? `style="object-position:${escapeHtml(data.photoPos)}"` : ''}
                  alt="${escapeHtml(data.nameEn || '')}" onerror="this.src='profile-photo.jpg'">
             <div class="nc-hero-scrim"></div>
             <div class="nc-brand">
