@@ -311,8 +311,10 @@ function renderCard(data, container) {
     <div class="nc-wrap">
     <span class="nc-p"></span><span class="nc-p"></span><span class="nc-p"></span><span class="nc-p"></span>
     <div class="nc">
-        <div class="nc-scan"></div>
-        <div class="nc-top">
+        <div class="nc-hero">
+            <img class="nc-hero-img" src="${escapeHtml(data.photoUrl || 'profile-photo.jpg')}"
+                 alt="${escapeHtml(data.nameEn || '')}" onerror="this.src='profile-photo.jpg'">
+            <div class="nc-hero-scrim"></div>
             <div class="nc-brand">
                 <div class="nc-logo-box"><img class="nc-logo" src="logo.png" alt="SyncBuddy"
                      onerror="this.style.visibility='hidden'"></div>
@@ -321,21 +323,11 @@ function renderCard(data, container) {
                     <div class="nc-brand-sub">${escapeHtml(data.companyFull || 'Sync Buddy Tech Limited')}</div>
                 </div>
             </div>
-            <div class="nc-hero">
-                <div class="nc-photo-ring">
-                    <div class="nc-photo-inner">
-                        <img src="${escapeHtml(data.photoUrl || 'profile-photo.jpg')}"
-                             alt="${escapeHtml(data.nameEn || '')}" onerror="this.src='profile-photo.jpg'">
-                        <div class="nc-photo-scan"></div>
-                    </div>
-                    <div class="nc-plus"><svg viewBox="0 0 24 24" fill="none" stroke="#04222b" stroke-width="4" stroke-linecap="round"><path d="M5 12h14M12 5v14"/></svg></div>
-                </div>
-                <div class="nc-id">
-                    <div class="nc-name-zh">${escapeHtml(data.nameZh || '')}</div>
-                    <div class="nc-name-en">${escapeHtml(data.nameEn || '')}</div>
-                    <div class="nc-title">${escapeHtml(data.titleEn || '')}</div>
-                    ${data.titleZh ? `<div class="nc-title-zh">${escapeHtml(data.titleZh)}</div>` : ''}
-                </div>
+            <div class="nc-hero-id">
+                <div class="nc-name-zh">${escapeHtml(data.nameZh || '')}</div>
+                <div class="nc-name-en">${escapeHtml(data.nameEn || '')}</div>
+                <div class="nc-title">${escapeHtml(data.titleEn || '')}</div>
+                ${data.titleZh ? `<div class="nc-title-zh">${escapeHtml(data.titleZh)}</div>` : ''}
             </div>
         </div>
 
