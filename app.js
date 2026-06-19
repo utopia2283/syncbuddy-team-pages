@@ -323,6 +323,14 @@ function renderCard(data, container) {
             </span>
         </div>`);
     }
+    {
+        const site = (data.footerWebsite || data.website || 'www.syncbuddy.ai').replace(/^https?:\/\//, '');
+        contactRows.push(`
+        <div class="nc-ci nc-ci-full" onclick="window.open('https://${escapeHtml(site)}','_blank')">
+            <div class="nc-ci-lab">Website</div>
+            <div class="nc-ci-val">${escapeHtml(site)}</div>
+        </div>`);
+    }
     if (data.address) {
         contactRows.push(`
         <div class="nc-ci nc-ci-full" onclick="window.open('${escapeHtml(mapHref)}','_blank')">
