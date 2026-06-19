@@ -91,7 +91,7 @@ function saveToContact(data) {
 VERSION:3.0
 N:${escapeHtml(cardData.nameZh || '')};${escapeHtml(cardData.nameEn || '')};;;
 FN:${escapeHtml(cardData.nameEn || cardData.nameZh || '')}
-ORG:${escapeHtml(cardData.companyFull || cardData.company || 'SyncBuddy Technology Limited')}
+ORG:${escapeHtml(cardData.companyFull || cardData.company || 'SyncBuddy Tech Limited')}
 TITLE:${escapeHtml(cardData.titleEn || cardData.titleZh || '')}
 TEL;TYPE=WORK,MSG:${escapeHtml(cardData.phoneHK || '')}
 TEL;TYPE=CELL:${escapeHtml(cardData.phoneCN || '')}
@@ -272,9 +272,9 @@ function renderCard(data, container) {
     const creds = buildCredentials(data);
     const showTrack = false; // Track Record section hidden (flip to true to show)
     const track = showTrack ? buildTrack(data) : [];
-    // Brand name: "SyncBuddy" (white) + remainder e.g. "Technology Limited" (blue)
+    // Brand name: "SyncBuddy" (white) + remainder e.g. "Tech Limited" (blue)
     const coName = data.company || 'SyncBuddy';
-    const coFull = data.companyFull || 'SyncBuddy Technology Limited';
+    const coFull = data.companyFull || 'SyncBuddy Tech Limited';
     const coRest = coFull.startsWith(coName) ? coFull.slice(coName.length).trim() : coFull;
     const url = cardURL(data);
     const mapHref = data.addressMapQuery ||
