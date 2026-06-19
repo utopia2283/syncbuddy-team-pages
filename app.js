@@ -270,7 +270,8 @@ function renderCard(data, container) {
     window._currentCardData = data;
 
     const creds = buildCredentials(data);
-    const track = buildTrack(data);
+    const showTrack = false; // Track Record section hidden (flip to true to show)
+    const track = showTrack ? buildTrack(data) : [];
     // Brand name: "SyncBuddy" (white) + remainder e.g. "Technology Limited" (blue)
     const coName = data.company || 'SyncBuddy';
     const coFull = data.companyFull || 'SyncBuddy Technology Limited';
