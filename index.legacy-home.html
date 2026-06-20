@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SyncBuddy Tech Limited builds AI models and platforms for business and society needs.">
+    <title>SyncBuddy Tech Limited · Your AI Buddy</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <div class="cursor-glow" aria-hidden="true"></div>
+    <header class="site-header">
+        <a class="brand" href="/" aria-label="SyncBuddy home">
+            <img src="logo.png" alt="SyncBuddy logo">
+            <span>
+                <strong>SyncBuddy</strong>
+                <small>Tech Limited</small>
+            </span>
+        </a>
+        <nav aria-label="Primary navigation">
+            <a href="#about" data-i18n="nav.about">About Us</a>
+            <a href="#products" data-i18n="nav.products">Products</a>
+            <a href="#team" data-i18n="nav.team">Core Team</a>
+            <a href="#news" data-i18n="nav.news">News</a>
+            <a href="#contact" data-i18n="nav.contact">Contact</a>
+            <button class="lang-toggle" type="button" aria-label="Switch language" aria-pressed="false">
+                <span data-lang-option="en">EN</span>
+                <span data-lang-option="zh">中</span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow" data-i18n="hero.eyebrow">SyncBuddy Tech Limited</p>
+                <h1 class="tagline" data-i18n="hero.tagline">#Synchronize #AI #KingMaker</h1>
+                <p class="hero-lede" data-i18n="hero.lede">We synchronize and add value to our stakeholders with AI, building models and platforms for business and society needs.</p>
+                <div class="hero-actions">
+                    <a class="btn primary" href="#about" data-i18n="cta.about">About Us</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section about-section" id="about">
+            <p class="section-kicker" data-i18n="about.kicker">About Us</p>
+            <div class="about-layout">
+                <div class="about-copy">
+                    <h2>SyncBuddy Tech Limited</h2>
+                    <p class="about-tagline">#Synchronize #AI #KingMaker</p>
+                    <div class="statement-grid">
+                        <article>
+                            <span data-i18n="about.mission.title">Our Mission</span>
+                            <p data-i18n="about.mission.body">We synchronize and add value to our stakeholders with AI.</p>
+                        </article>
+                        <article>
+                            <span data-i18n="about.product.title">Our Product</span>
+                            <p data-i18n="about.product.body">We build AI models or platforms for business or society needs.</p>
+                        </article>
+                    </div>
+                    <div class="zh-copy">
+                        <p data-i18n="about.mission.zh">使命：我們透過人工智能為持份者創造價值，解決痛點、發掘新商機與增長動力、提高效能、帶來價值。</p>
+                        <p data-i18n="about.product.zh">產品：我們針對商業或社會需求，構建人工智慧模型或平台，包括 AI 學習平台、AI ERP、AI 情緒治療師等。</p>
+                    </div>
+                </div>
+                <div class="video-frame" aria-label="SyncBuddy video">
+                    <iframe src="https://www.youtube.com/embed/F8Y4KIbx_5w" title="SyncBuddy Tech Limited video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section class="section products" id="products">
+            <div class="section-heading">
+                <p class="section-kicker" data-i18n="products.kicker">Our Products</p>
+                <h2 data-i18n="products.heading">AI platforms for real business and social needs</h2>
+            </div>
+            <div class="product-grid">
+                <article class="product-card featured">
+                    <span>3.1</span>
+                    <img class="product-logo df" src="dongfeng-logo.png" alt="東風 Dong Feng logo">
+                    <h3>東風 造王者</h3>
+                    <p class="product-subtitle" data-i18n="product.dongfeng.subtitle">創業者 AI 軍師</p>
+                    <p data-i18n="product.dongfeng.body1">專為創業者而設的 AI 一體化平台，以 WhatsApp、微信等日常通訊軟件為入口，讓每一個商業難題及決策都能在對話中解決。</p>
+                    <p data-i18n="product.dongfeng.body2">有效益的獲客工具，結合主動預警、因果分析、時機判斷與行動序列。</p>
+                </article>
+                <article class="product-card">
+                    <span>3.2</span>
+                    <img class="product-logo edu" src="syncbuddy-edu-logo.png" alt="SyncBuddy Edu logo">
+                    <h3>SyncBuddy Edu</h3>
+                    <p data-i18n="product.institute.body">針對專業機構合規培訓的 AI 學習平台，解決代學詐騙、法規更新滯後及雲端監考私隱風險。</p>
+                    <ul>
+                        <li data-i18n="product.institute.li1">Verify: Edge-Guard SDK for privacy-preserving identity verification.</li>
+                        <li data-i18n="product.institute.li2">Generate: regulatory RAG engine turning PDFs into interactive assessments.</li>
+                        <li data-i18n="product.institute.li3">Simulate: synthetic data simulation for audit, risk and medical case training.</li>
+                        <li data-i18n="product.institute.li4">Edge AI: 100% browser-local inference via TensorFlow.js / WASM, with no video streaming or storage.</li>
+                    </ul>
+                </article>
+                <article class="product-card">
+                    <span>3.3</span>
+                    <h3>Gut Sync</h3>
+                    <p class="product-subtitle" data-i18n="product.gutsync.subtitle">全球華人非遺民俗與傳統信仰數位傳承平台</p>
+                    <ul class="gutsync-list">
+                        <li>
+                            <strong data-i18n="product.gutsync.t1">助用戶趨吉避凶，命轉乾坤</strong>
+                            <p data-i18n="product.gutsync.b1">「導人向善、安頓心靈」Gut Sync 透過精準的科技算法與正宗的傳統智慧相結合，在信眾面臨人生重大抉擇（如結婚、創業、置業、生子）或面臨驚蟄、犯太歲等年節轉折點時，及時指點迷津。平台提供正宗、不迷信、具備現代心理學與哲學意涵的化解與祈福之道，協助信眾在生活中做到趨吉避凶，達到心靈平安。</p>
+                        </li>
+                        <li>
+                            <strong data-i18n="product.gutsync.t2">中華文化輸出 / 推廣本土文化</strong>
+                            <p data-i18n="product.gutsync.b2">香港作為中西文化交匯的國際大都市，完整且獨特地保留了諸多珍貴的中華傳統民俗（如驚蟄鵝頸橋打小人、黃大仙求籤、觀音借庫等），不僅是香港本土文化的瑰寶，更是中華傳統文化的重要組成部分。Gut Sync 以香港本土民俗為起點，透過現代化數位手段、多語言支持及全球化雲端架構進行包裝與傳播，將博大精深的中華傳統文化與東方智慧，以最符合現代人閱讀習慣的方式推向國際舞台，實現真正的文化輸出。</p>
+                        </li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section class="section team" id="team">
+            <div class="section-heading">
+                <p class="section-kicker" data-i18n="team.kicker">Core Team</p>
+                <h2 data-i18n="team.heading">Background-rich, battle-tested, deeply networked.</h2>
+            </div>
+            <div class="team-detail-grid" aria-label="Core team profiles">
+                <article class="leader-card">
+                    <div class="leader-top">
+                        <img class="profile-photo-carine-tam" src="carine-photo-20260509.jpg" alt="Carine Tam">
+                        <div>
+                            <span data-i18n="team.carine.title">Founder & CEO</span>
+                            <h3>Carine Tam 譚杏賢</h3>
+                            <p data-i18n="team.carine.zhrole">聯席創辦人兼首席執行官</p>
+                        </div>
+                    </div>
+                    <ul class="leader-bullets">
+                        <li data-i18n="team.carine.li1">香港會計師公會會計師（HKICPA）</li>
+                        <li data-i18n="team.carine.li2">香港特許秘書及公司治理師（HKACG）</li>
+                        <li data-i18n="team.carine.li3">香港科技大學資訊系統管理理學碩士（MScISM）</li>
+                        <li data-i18n="team.carine.li4">香港中文大學工商管理學士（BBA）</li>
+                        <li data-i18n="team.carine.li5">葵青扶輪社創社社長</li>
+                        <li data-i18n="team.carine.li6">九龍城工商聯會副會長</li>
+                        <li data-i18n="team.carine.li7">九龍城公益聯會副會長</li>
+                        <li data-i18n="team.carine.li8">香港交通安全隊副總隊監</li>
+                        <li data-i18n="team.carine.li9">香港青年新創見副會長</li>
+                    </ul>
+                </article>
+                <article class="leader-card">
+                    <div class="leader-top">
+                        <img class="profile-photo-match-fan" src="match-photo-20260509.jpg" alt="Match Fan">
+                        <div>
+                            <span data-i18n="team.match.title">Co-Founder & CSO</span>
+                            <h3>Match Fan 范景誠</h3>
+                            <p data-i18n="team.match.zhrole">聯席創辦人兼首席策略官</p>
+                        </div>
+                    </div>
+                    <ul class="leader-bullets">
+                        <li data-i18n="team.match.li1">人工智能應用協會創會會長</li>
+                        <li data-i18n="team.match.li2">新界總商會董事</li>
+                        <li data-i18n="team.match.li3">香港青年新創見副會長</li>
+                    </ul>
+                </article>
+                <article class="leader-card">
+                    <div class="leader-top">
+                        <img class="profile-photo-calvin-tse" src="calvin-photo.jpg" alt="Calvin Tse">
+                        <div>
+                            <span data-i18n="team.calvin.title">Co-Founder</span>
+                            <h3>Prof. Calvin Tse 謝海發教授</h3>
+                            <p data-i18n="team.calvin.zhrole">聯席創辦人</p>
+                        </div>
+                    </div>
+                    <ul class="leader-bullets">
+                        <li data-i18n="team.calvin.li1">執業資深會計師（FCPA）</li>
+                        <li data-i18n="team.calvin.li2">香港中文大學工商管理學士（BBA）</li>
+                        <li data-i18n="team.calvin.li3">倫敦大學法學學士（LLB）</li>
+                        <li data-i18n="team.calvin.li4">中國人民大學中國法學碩士</li>
+                        <li data-i18n="team.calvin.li5">福布斯中國卓越企業卓越領袖才俊（2022）</li>
+                        <li data-i18n="team.calvin.li6">香港十大傑出青年（2022）</li>
+                        <li data-i18n="team.calvin.li7">創新科技署城市創科大挑戰諮詢委員會</li>
+                        <li data-i18n="team.calvin.li8">香港特區政府青年發展委員會</li>
+                        <li data-i18n="team.calvin.li9">香港浸會大學基金會青年企業家委員會委員</li>
+                        <li data-i18n="team.calvin.li10">香港會計師公會副會長</li>
+                        <li data-i18n="team.calvin.li11">九龍樂善堂常務總理（2021–2023）</li>
+                        <li data-i18n="team.calvin.li12">中國人民政治協商會議山東省委員會政協委員</li>
+                        <li data-i18n="team.calvin.li13">國家稅務總局港區稅務專家</li>
+                        <li data-i18n="team.calvin.li14">珠海市財政金融庫專家</li>
+                    </ul>
+                </article>
+                <article class="leader-card">
+                    <div class="leader-top">
+                        <img src="kenneth-photo-20260509.jpg" alt="Kenneth Lui">
+                        <div>
+                            <span data-i18n="team.kenneth.title">Co-Founder & CBO</span>
+                            <h3>Kenneth Lui 雷琨傑</h3>
+                            <p data-i18n="team.kenneth.zhrole">聯席創辦人兼首席商務官</p>
+                        </div>
+                    </div>
+                    <ul class="leader-bullets">
+                        <li data-i18n="team.kenneth.li1">香港城市大學市場營銷系學士</li>
+                        <li data-i18n="team.kenneth.li2">葵青扶輪社創社成員</li>
+                        <li data-i18n="team.kenneth.li3">香港青年新創見副秘書長</li>
+                        <li data-i18n="team.kenneth.li4">香港證監會核准持牌負責人</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section class="section news-section" id="news">
+            <div class="section-heading">
+                <p class="section-kicker" data-i18n="news.kicker">News & Events</p>
+                <h2 data-i18n="news.heading">消息與活動</h2>
+            </div>
+            <div class="news-panel">
+                <span>2026.5.19</span>
+                <strong data-i18n="news.title">Website refresh</strong>
+                <p data-i18n="news.body">SyncBuddy Tech Limited is expanding its company website to cover mission, product roadmap, core team, news and contact channels.</p>
+            </div>
+        </section>
+
+        <section class="console-band" id="contact">
+            <div>
+                <p class="section-kicker" data-i18n="contact.kicker">Contact Us</p>
+                <h2 data-i18n="contact.heading">聯絡我們</h2>
+                <div class="contact-grid">
+                    <a href="mailto:info@syncbuddy.ai">info@syncbuddy.ai</a>
+                    <a href="tel:+85265883768">(852) 6588 3768</a>
+                    <a href="tel:+8617875343411">(86) 178 7534 3411</a>
+                    <a href="https://www.facebook.com/share/19AeV2WcLs/?mibextid=wwXIfr" target="_blank" rel="noreferrer">Facebook</a>
+                    <a href="https://www.instagram.com/syncbuddyai?igsh=MTc0eXcxNHhiNjR5ZQ%3D%3D&amp;utm_source=qr" target="_blank" rel="noreferrer">Instagram</a>
+                </div>
+            </div>
+            <a class="btn secondary dark" href="mailto:info@syncbuddy.ai">Email Us</a>
+        </section>
+
+        <section class="final-cta">
+            <p data-i18n="final.kicker">#Synchronize #AI #KingMaker</p>
+            <h2 data-i18n="final.heading">Build the next practical AI platform with SyncBuddy Tech Limited.</h2>
+            <div class="hero-actions">
+                <a class="btn primary" href="mailto:info@syncbuddy.ai" data-i18n="cta.contact">Contact Us</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <span>SyncBuddy Tech Limited · 2026</span>
+        <nav class="footer-links" aria-label="Legal">
+            <a href="/privacy">Privacy &amp; Compliance</a>
+            <a href="/subprocessors">Subprocessors</a>
+        </nav>
+    </footer>
+    <script src="home.js"></script>
+</body>
+</html>
