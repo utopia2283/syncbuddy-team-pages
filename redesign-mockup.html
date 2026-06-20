@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SyncBuddy — Redesign Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<style>
+:root{
+  --bg:#04060b; --cyan:#22d3ee; --blue:#3b82f6; --violet:#7c5cff;
+  --ink:#f3f6fb; --muted:#93a0b5; --line:rgba(255,255,255,.08);
+  --glass:rgba(14,18,28,.55);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{font-family:Inter,"Noto Sans TC",system-ui,sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden}
+
+/* ---------- FIXED CINEMATIC BACKGROUND (scroll-bound) ---------- */
+.cine{position:fixed;inset:0;z-index:0;overflow:hidden;background:
+  radial-gradient(120% 80% at 50% -10%, rgba(34,211,238,.10), transparent 60%),
+  radial-gradient(90% 70% at 110% 110%, rgba(124,92,255,.12), transparent 55%),
+  var(--bg);}
+.cine canvas{position:absolute;inset:0;width:100%;height:100%}
+.cine-img{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;
+  filter:saturate(1.12) brightness(1.0) contrast(1.1);will-change:transform}
+#loadmask{position:fixed;inset:0;z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
+  background:#04060b;color:#cdd7e6;font-size:13px;letter-spacing:3px;transition:opacity .6s ease}
+#loadmask.hide{opacity:0;pointer-events:none}
+#loadmask .bar{width:200px;height:2px;background:rgba(255,255,255,.12);overflow:hidden;border-radius:2px}
+#loadmask .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--violet))}
+.aurora{position:absolute;inset:-20%;z-index:0;filter:blur(70px);opacity:.32;mix-blend-mode:screen;
+  background:
+   radial-gradient(40% 40% at calc(30% + var(--px,0)*1px) 30%, rgba(34,211,238,.35), transparent 60%),
+   radial-gradient(45% 45% at calc(75% - var(--px,0)*1px) 65%, rgba(59,130,246,.30), transparent 60%),
+   radial-gradient(35% 35% at 55% calc(90% + var(--py,0)*1px), rgba(124,92,255,.30), transparent 60%);
+  transform:translateY(calc(var(--p,0)*-8%)) scale(calc(1 + var(--p,0)*.12));
+  transition:transform .1s linear}
+.grid-floor{position:absolute;left:-25%;right:-25%;bottom:-10%;height:65%;z-index:1;
+  background-image:linear-gradient(rgba(34,211,238,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(34,211,238,.18) 1px,transparent 1px);
+  background-size:46px 46px;transform-origin:bottom;
+  transform:perspective(420px) rotateX(70deg) translateY(calc(var(--p,0)*40px));
+  mask-image:linear-gradient(to top,#000,transparent 80%);-webkit-mask-image:linear-gradient(to top,#000,transparent 80%);opacity:.5}
+.scan{position:absolute;inset:0;z-index:3;pointer-events:none;mix-blend-mode:overlay;opacity:.06;
+  background:repeating-linear-gradient(to bottom,#fff 0 1px,transparent 1px 3px)}
+.vignette{position:absolute;inset:0;z-index:3;pointer-events:none;
+  background:radial-gradient(120% 90% at 50% 40%,transparent 55%,rgba(0,0,0,.55))}
+.progress{position:fixed;left:0;top:0;height:2px;z-index:90;width:calc(var(--p,0)*100%);
+  background:linear-gradient(90deg,var(--cyan),var(--violet));box-shadow:0 0 12px rgba(34,211,238,.6)}
+
+/* ---------- NAVBAR ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:80;display:flex;align-items:center;justify-content:space-between;
+  padding:18px clamp(20px,5vw,64px);backdrop-filter:blur(14px);
+  background:linear-gradient(to bottom,rgba(4,6,11,.6),transparent);border-bottom:1px solid transparent}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:38px;height:38px;border-radius:9px}
+.brand b{font-size:17px;letter-spacing:.2px;display:block;line-height:1}
+.brand small{font-size:10px;letter-spacing:3px;color:var(--cyan);text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;font-size:12px;font-weight:700}
+.lang span{padding:6px 12px;color:var(--muted)}
+.lang span.on{background:linear-gradient(90deg,var(--cyan),var(--blue));color:#02121a}
+@media(max-width:860px){.nav-links a{display:none}}
+
+/* ---------- LAYOUT ---------- */
+.stage{position:relative;z-index:10}
+section{position:relative;padding:0 clamp(20px,5vw,64px)}
+.hero{height:100vh;min-height:680px;display:flex;flex-direction:column;justify-content:center;max-width:1180px;margin:0 auto}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:4px;text-transform:uppercase;color:var(--cyan);margin-bottom:22px}
+.hero h1{position:relative;z-index:2;font-size:clamp(54px,10.8vw,164px);font-weight:900;line-height:.88;letter-spacing:-3px;
+  background:linear-gradient(180deg,#fff,#aebfd3);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 38px rgba(34,211,238,.35)) drop-shadow(0 6px 30px rgba(0,0,0,.6))}
+.hero .accent{background:linear-gradient(100deg,var(--cyan) 0%,#a78bfa 35%,#fff 50%,var(--cyan) 70%,var(--violet) 100%);
+  background-size:240% auto;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:sweep 5s linear infinite}
+@keyframes sweep{to{background-position:240% center}}
+.bloom{position:absolute;z-index:1;left:-6%;top:18%;width:min(720px,60vw);height:min(560px,50vh);pointer-events:none;
+  background:radial-gradient(closest-side,rgba(34,211,238,.22),rgba(124,92,255,.12) 55%,transparent 75%);filter:blur(8px)}
+.lede{max-width:620px;margin-top:26px;font-size:clamp(16px,1.5vw,20px);line-height:1.6;color:var(--muted)}
+.cta{margin-top:38px;display:flex;gap:16px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:12px;font-weight:700;text-decoration:none;font-size:15px}
+.btn-primary{background:linear-gradient(90deg,var(--cyan),var(--blue));color:#02121a;box-shadow:0 10px 40px -8px rgba(34,211,238,.5)}
+.btn-ghost{color:var(--ink);border:1px solid var(--line)}
+.scrollcue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted);font-size:10px;letter-spacing:3px}
+.scrollcue i{width:1px;height:46px;background:linear-gradient(var(--cyan),transparent)}
+
+.reveal{opacity:0;transform:translateY(40px)}
+.band{max-width:1180px;margin:0 auto;padding:120px 0}
+.kicker{font-size:12px;font-weight:800;letter-spacing:4px;text-transform:uppercase;color:var(--cyan);margin-bottom:14px}
+.h2{font-size:clamp(30px,4.5vw,56px);font-weight:800;letter-spacing:-1px;line-height:1.05}
+
+.glass{background:var(--glass);border:1px solid var(--line);border-radius:22px;backdrop-filter:blur(16px);
+  box-shadow:0 30px 80px -40px rgba(0,0,0,.8)}
+.about{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:48px}
+@media(max-width:860px){.about{grid-template-columns:1fr;padding:30px}}
+.about p.lead{color:var(--cyan);font-weight:700;margin:6px 0 22px}
+.stmt{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px}
+.stmt span{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);font-weight:800}
+.stmt p{color:var(--muted);font-size:14px;margin-top:6px;line-height:1.5}
+.videoframe{aspect-ratio:16/10;border-radius:16px;border:1px solid var(--line);
+  background:linear-gradient(135deg,rgba(34,211,238,.12),rgba(124,92,255,.12));display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px}
+
+.prodgrid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:22px;margin-top:46px}
+@media(max-width:980px){.prodgrid{grid-template-columns:1fr}}
+.card{position:relative;padding:30px;border-radius:22px;overflow:hidden;border:1px solid var(--line);
+  background:linear-gradient(160deg,rgba(20,26,38,.7),rgba(8,11,18,.7));backdrop-filter:blur(12px);
+  transition:transform .4s cubic-bezier(.4,0,.2,1),border-color .4s,box-shadow .4s}
+.card:hover{transform:translateY(-8px);border-color:rgba(34,211,238,.5);box-shadow:0 30px 70px -30px rgba(34,211,238,.4)}
+.card.featured{background:linear-gradient(160deg,rgba(34,211,238,.10),rgba(124,92,255,.08))}
+.card .no{font-size:12px;font-weight:800;color:var(--cyan);letter-spacing:2px}
+.card img.logo{height:96px;width:auto;margin:14px 0 8px;filter:drop-shadow(0 0 22px rgba(34,211,238,.32))}
+.card h3{font-size:24px;font-weight:800;margin:8px 0 4px}
+.card .sub{color:var(--cyan);font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px}
+.card p,.card li{color:var(--muted);font-size:14px;line-height:1.6}
+.card ul{margin:12px 0 0 0;list-style:none;display:grid;gap:10px}
+.card li{position:relative;padding-left:18px}
+.card li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--cyan)}
+.card li strong{display:block;color:var(--ink);font-weight:700;margin-bottom:4px}
+
+.foot{max-width:1180px;margin:0 auto;padding:60px 0 90px;display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+.tag{display:inline-flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.tag b{font-size:11px;color:var(--cyan);border:1px solid rgba(34,211,238,.3);border-radius:999px;padding:4px 10px;font-weight:700}
+.note{position:fixed;bottom:14px;left:14px;z-index:95;font-size:11px;color:var(--muted);background:rgba(0,0,0,.6);border:1px solid var(--line);border-radius:8px;padding:6px 10px;backdrop-filter:blur(8px)}
+</style>
+</head>
+<body>
+<div id="loadmask"><div>LOADING</div><div class="bar"><i></i></div><div id="loadpct">0%</div></div>
+<div class="progress"></div>
+<div class="cine">
+  <canvas class="cine-img" id="seq"></canvas>
+  <div class="aurora"></div>
+  <canvas id="flow"></canvas>
+  <div class="scan"></div>
+  <div class="vignette"></div>
+</div>
+
+<header class="nav">
+  <div class="brand">
+    <img src="logo.png" alt="">
+    <span><b>SyncBuddy</b><small>Tech Limited</small></span>
+  </div>
+  <nav class="nav-links">
+    <a href="#about">About Us</a><a href="#products">Products</a><a href="#team">Core Team</a><a href="#news">News</a><a href="#contact">Contact</a>
+  </nav>
+  <div class="lang"><span class="on">EN</span><span>中</span></div>
+</header>
+
+<div class="stage">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="bloom"></div>
+    <p class="eyebrow">SyncBuddy Tech Limited</p>
+    <h1><span class="accent">#Synchronize</span><br>#AI #KingMaker</h1>
+    <p class="lede">We synchronize and add value to our stakeholders with AI, building models and platforms for business and society needs.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="#about">About Us →</a>
+    </div>
+    <div class="scrollcue"><span>SCROLL</span><i></i></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="band">
+    <div class="reveal glass about">
+      <div>
+        <p class="kicker">About Us</p>
+        <h2 class="h2">SyncBuddy Tech Limited</h2>
+        <p class="lead">#Synchronize #AI #KingMaker</p>
+        <div class="stmt">
+          <div><span>Our Mission</span><p>我們透過人工智能為持份者創造價值。</p></div>
+          <div><span>Our Product</span><p>我們針對商業或社會需求,構建人工智慧模型或平台。</p></div>
+        </div>
+      </div>
+      <div class="videoframe">公司影片 (YouTube)</div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="products" class="band">
+    <p class="kicker reveal">Our Products</p>
+    <h2 class="h2 reveal">針對商業與社會需求的 AI 平台</h2>
+    <div class="prodgrid">
+      <article class="card featured reveal">
+        <div class="no">3.1</div>
+        <img class="logo" src="dongfeng-logo.png" alt="">
+        <h3>東風 造王者</h3>
+        <div class="sub">創業者 AI 軍師</div>
+        <p>專為創業者而設的 AI 一體化平台,以 WhatsApp、微信等日常通訊軟件為入口,讓每一個商業難題及決策都能在對話中解決。</p>
+        <p style="margin-top:12px">有效益的獲客工具,結合主動預警、因果分析、時機判斷與行動序列。</p>
+      </article>
+      <article class="card reveal">
+        <div class="no">3.2</div>
+        <img class="logo" src="syncbuddy-edu-logo.png" alt="">
+        <h3>SyncBuddy Edu</h3>
+        <p>針對專業機構合規培訓的 AI 學習平台,解決代學詐騙、法規更新滯後及雲端監考私隱風險。</p>
+        <ul>
+          <li>Verify：用於私隱保護身分驗證的 Edge-Guard SDK。</li>
+          <li>Generate：可將法規 PDF 轉為互動測驗的法規 RAG 引擎。</li>
+          <li>Edge AI：100% 瀏覽器本地推理,不串流也不儲存影片。</li>
+        </ul>
+      </article>
+      <article class="card reveal">
+        <div class="no">3.3</div>
+        <h3 style="margin-top:14px">Gut Sync</h3>
+        <div class="sub">全球華人非遺民俗數位傳承平台</div>
+        <ul>
+          <li><strong>助用戶趨吉避凶,命轉乾坤</strong>科技算法結合正宗傳統智慧,在人生重大抉擇及年節轉折點及時指點迷津。</li>
+          <li><strong>中華文化輸出 / 推廣本土文化</strong>以香港本土民俗為起點,透過數位手段推向國際舞台。</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- TEAM teaser -->
+  <section id="team" class="band">
+    <div class="reveal">
+      <p class="kicker">Core Team</p>
+      <h2 class="h2">Background-rich, battle-tested, deeply networked.</h2>
+      <p class="lede" style="margin-top:20px">Carine Tam 譚杏賢 · Match Fan 范景誠 · Prof. Calvin Tse 謝海發教授 · Kenneth Lui 雷琨傑 — 完整資歷照舊呈現。</p>
+    </div>
+  </section>
+
+  <footer class="band">
+    <div class="reveal glass" style="padding:40px;text-align:center">
+      <p class="kicker" style="text-align:center">Your AI Buddy</p>
+      <h2 class="h2">Build the next practical AI platform<br>with SyncBuddy Tech Limited.</h2>
+      <div class="cta" style="justify-content:center"><a class="btn btn-primary" href="#contact">Contact Us</a></div>
+    </div>
+    <div class="foot">
+      <span>SyncBuddy Tech Limited · 2026</span>
+      <span class="tag"><b>#Synchronize</b><b>#AI</b><b>#KingMaker</b></span>
+    </div>
+  </footer>
+</div>
+
+<div class="note">MOCKUP · scroll-bound cinematic Hero · 文字內容原樣</div>
+
+<script>
+// scroll-bound cinematic background (simulates scroll→video scrub)
+const root=document.documentElement;
+gsap.registerPlugin(ScrollTrigger);
+// Lenis smooth scroll (OSIRIS technique)
+try{
+  const lenis=new Lenis({lerp:.1,smoothWheel:true});
+  lenis.on('scroll',()=>ScrollTrigger.update());
+  gsap.ticker.add(t=>lenis.raf(t*1000));
+  gsap.ticker.lagSmoothing(0);
+}catch(e){}
+// ---- scroll-bound frame sequence (OSIRIS technique: canvas, no video seek) ----
+const cv=document.getElementById('seq'), cx=cv.getContext('2d');
+gsap.set(cv,{scale:1.35});
+const N=81; const imgs=new Array(N); let loaded=0, curIdx=-1;
+const mask=document.getElementById('loadmask'),pctEl=document.getElementById('loadpct'),bar=document.querySelector('#loadmask .bar i');
+function setPct(v){v=Math.max(0,Math.min(100,Math.round(v)));if(pctEl)pctEl.textContent=v+'%';if(bar)bar.style.width=v+'%';}
+function draw(i,force){ i=Math.max(0,Math.min(N-1,i)); const im=imgs[i]; if(!im||!im.complete||!im.naturalWidth)return; if(i===curIdx&&!force)return; curIdx=i;
+  const cw=cv.width,ch=cv.height,iw=im.naturalWidth,ih=im.naturalHeight,s=Math.max(cw/iw,ch/ih),w=iw*s,h=ih*s;
+  cx.clearRect(0,0,cw,ch); cx.drawImage(im,(cw-w)/2,(ch-h)/2,w,h); }
+function sizeCanvas(){const dpr=Math.min(devicePixelRatio||1,2);cv.width=innerWidth*dpr;cv.height=innerHeight*dpr;draw(curIdx<0?0:curIdx,true);}
+function hideMask(){if(mask)mask.classList.add('hide');}
+for(let i=0;i<N;i++){ const im=new Image();
+  im.onload=()=>{loaded++;setPct(loaded/N*100);if(i===0)draw(0,true);if(loaded===N)hideMask();};
+  im.onerror=()=>{loaded++;if(loaded===N)hideMask();};
+  im.src='frames/f_'+String(i+1).padStart(3,'0')+'.jpg'; imgs[i]=im; }
+setTimeout(hideMask,9000);
+addEventListener('resize',sizeCanvas); sizeCanvas();
+ScrollTrigger.create({trigger:document.documentElement,start:'top top',end:'bottom bottom',scrub:true,
+  onUpdate:self=>{const p=self.progress;root.style.setProperty('--p',p);root.style.setProperty('--px',(p*120).toFixed(1));root.style.setProperty('--py',(p*-80).toFixed(1));
+    draw(Math.round(p*(N-1)));}});
+if(matchMedia('(hover:hover) and (pointer:fine)').matches){
+  addEventListener('mousemove',e=>{const mx=(e.clientX/innerWidth-.5)*2,my=(e.clientY/innerHeight-.5)*2;
+    gsap.to(cv,{x:-mx*30,y:-my*30,duration:.6,ease:'power2.out',overwrite:'auto'});},{passive:true});
+}
+gsap.utils.toArray('.reveal').forEach(el=>{
+  gsap.to(el,{opacity:1,y:0,duration:.9,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 82%'}});
+});
+// cinematic entrance
+gsap.set(['.hero .eyebrow','.hero h1','.hero .lede','.hero .cta'],{opacity:0,y:36});
+gsap.set('.hero h1',{scale:1.06});
+gsap.timeline({defaults:{ease:'power4.out'},delay:.12})
+ .to('.hero h1',{opacity:1,y:0,scale:1,duration:1.2},0)
+ .to('.hero .eyebrow',{opacity:1,y:0,duration:.8},.1)
+ .to('.hero .lede',{opacity:1,y:0,duration:.85},.42)
+ .to('.hero .cta',{opacity:1,y:0,duration:.85},.56);
+
+// flow-field particle canvas (overlay)
+const fcv=document.getElementById('flow'),fctx=fcv.getContext('2d');let W,H,parts=[];
+function size(){W=fcv.width=innerWidth*devicePixelRatio;H=fcv.height=innerHeight*devicePixelRatio;}
+size();addEventListener('resize',size);
+for(let i=0;i<110;i++)parts.push({x:Math.random()*1,y:Math.random()*1,s:.0006+Math.random()*.0016,r:Math.random()*1.6+.4});
+const C=['34,211,238','59,130,246','124,92,255'];
+function tick(){
+  fctx.clearRect(0,0,W,H);
+  const p=parseFloat(getComputedStyle(root).getPropertyValue('--p'))||0;
+  const boost=1+p*4;
+  for(let i=0;i<parts.length;i++){const o=parts[i];o.y-=o.s*boost;if(o.y<-.05){o.y=1.05;o.x=Math.random();}
+    const x=o.x*W,y=o.y*H,col=C[i%3];
+    const len=o.r*(8+p*60)*devicePixelRatio;
+    const g=fctx.createLinearGradient(x,y,x,y+len);
+    g.addColorStop(0,`rgba(${col},${.45})`);g.addColorStop(1,`rgba(${col},0)`);
+    fctx.strokeStyle=g;fctx.lineWidth=o.r*devicePixelRatio;fctx.beginPath();fctx.moveTo(x,y);fctx.lineTo(x,y+len);fctx.stroke();
+  }
+  requestAnimationFrame(tick);
+}
+tick();
+</script>
+</body>
+</html>

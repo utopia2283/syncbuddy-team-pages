@@ -1,0 +1,10 @@
+# clean-URL routes — 200 rewrite (proxy, keep source URL). Destinations use the
+# clean form (no .html) so CF Pages doesn't 308 to the clean URL.
+/match        /match-fan      200
+/calvin       /calvin-tse     200
+/kenneth      /kenneth-lui    200
+/carine       /carine-tam     200
+/privacy      /compliance     200
+/legal        /compliance     200
+/qr           /qrcode         200
+/demo         /demo/          200
